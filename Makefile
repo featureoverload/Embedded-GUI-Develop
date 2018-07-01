@@ -9,6 +9,23 @@ MOVE = mv
 COPY = cp
 RM   = rm 
 
+#
+# /
+# |---- libraries/
+# |         |---- mini-httpd...tar.gz
+# |         |---- DebugLog_solution.zip
+# |
+# |
+# |---- Makefile(<--this file)
+# |
+# |---- src/
+# |---- html/
+# |---- res/
+# |
+# |
+# |---- WorkPath/
+#
+
 
 ###
 ### 这里设定 libraries 的相关内容！
@@ -19,13 +36,15 @@ Libraries      := libraries
 
 CGI_PROGRAM = src
 
-.PHONY: lib all install clean
+.PHONY: $(Libraries) lib all install clean
 
 ###
 ### make lib => 需要 mini_httpd;  cgic.a, flate.a, cgiDebugLog.a 
 ###
 lib: $(Libraries)
 
+$(Libraries):
+	$(MAKE) --directory=$@
 
 ###
 ### make all ==> 将所有 src/*.c --编译成--> src/*.cgi 
@@ -46,7 +65,7 @@ $(CGI_PROGRAM): $(Libraries) ## $(Lib&Bin_DIR)
 ###
 ### 以下编译了 *.cgi， 并且确保依赖库要被编译。
 ###
-$(CGI_PROGRAM) $(Libraries):
+$(CGI_PROGRAM):
 	$(MAKE) --directory=$@   
 ## 
 ## ^^ 以上， 调用了 src/Makefile & libraries/Makefile
@@ -62,9 +81,9 @@ $(CGI_PROGRAM) $(Libraries):
 ###   没有的话， 需要打印提示消息！
 ###
 install:
-	reserve place
+	$(MAKE) --directory=$(Libraries) install
 
 
-clean:
+#clean:
 
 

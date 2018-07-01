@@ -11,7 +11,7 @@ TAR = tar
 TARFLAGS_GZ = -xzvf
 TARFLAGS_BZ2 = -jxvf
 
-UZIP = uzip
+UNZIP = unzip
 
 MAKE = make
 
@@ -20,18 +20,21 @@ MOVE = mv
 COPY = cp
 RM   = rm 
 
+EXE_CGIDebugLog := CGIDebugLogd.py daemonEcho2
+
+
 Lib_mini_httpd := mini_httpd
-Lib_CGIDebugLogd := CGIDebugLog
+Lib_CGIDebugLog := DebugLog_solution
 Lib_cgi := cgic
 Lib_template := flate
 ## cgic, flate, cgi-debug => **.a/so web.a
 
-#Libraries := $(Lib_mini_httpd) $(Lib_CGIDebugLogd) $(Lib_cgi) $(Lib_template)
+#Libraries := $(Lib_mini_httpd) $(Lib_CGIDebugLog) $(Lib_cgi) $(Lib_template)
 
-.PHONY: all   $(libraries) clean
+.PHONY: all  install $(Lib_CGIDebugLog) clean
 
 ##                           cgic.so           web.so
-all: mini_httpd CGIDebugLogd cgic.a   flate.a  cgidbg.a
+all:  $(Lib_CGIDebugLog)
 
 
 
@@ -42,48 +45,12 @@ all: mini_httpd CGIDebugLogd cgic.a   flate.a  cgidbg.a
 ### make lib 编译出库，并且copy 到一定的位置，提供 应用程序编译和运行环境。
 ###
 
-##
-## 1. 解压到 mini_httpd 文件夹中
-## 2. 修改编译不能通过的 htpasswd.c 文件
-## 3. 编译 mini_httpd
-##
-mini_httpd: $(Lib_mini_httpd)
-#### change getline() function on /mini_httpd-1.19/htpasswd.c
-#	change code...
-	$(MAKE) --directory=$^
-	$(COPY) $^/$@ ./
 
-CGIDebugLogd: $(Lib_CGIDebugLogd)
-	$(MAKE) --directory=$^
-	$(COPY) $^/$@ ./
+$(Lib_CGIDebugLog):  DebugLog_solution.zip
+	$(UNZIP) DebugLog_solution.zip 
+	$(MAKE) --directory=$(Lib_CGIDebugLog)
+	$(COPY) $(Lib_CGIDebugLog)/src/CGIDebugLogd.py $(Lib_CGIDebugLog)/src/daemonEcho2 ./
 
-cgic.a: $(Lib_cgi)
-	$(MAKE) --directory=$^
-	$(COPY) $^/$@ ./
-
-flate.a: $(Lib_template)
-	$(MAKE) --directory=$^
-	$(COPY) $^/$@ ./
-
-cgidbg.a: $(Lib_CGIDebugLogd)
-#	???$(COPY) $^/$@ ./
-
-
-$(Lib_mini_httpd): mini_httpd-1.19.tar.gz
-	$(TAR) $(TARFLAGS_GZ) $^ mini_httpd
-
-mini_httpd-1.19.tar.gz: 
-	wget http://www.acme.com/software/mini_httpd/mini_httpd-1.19.tar.gz
-
-
-$(Lib_CGIDebugLogd): CGIDebugLogd.zip
-	$(UZIP) $^
-
-
-$(Lib_cgi): cigc.zip
-	$(UZIP) $^
-
-
-$(Lib_template): flate.zip
-	$(UZIP) $^
+install:
+	$(MAKE) --directory=$(Lib_CGIDebugLog) install
 
