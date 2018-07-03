@@ -88,7 +88,7 @@ class Mini_httpd(object):
 ### running logical
 ###
 def main():
-	sourceCodePath =  os.getcwd() ## /home/josephlin/JosHOme/github-EbdGUIDev
+	sourceCodePath =  os.getcwd() ## /home/josephlin/.../github-EbdGUIDev
 	if doDebug:
 		print("work path: \"{}\"".format(sourceCodePath))
 
