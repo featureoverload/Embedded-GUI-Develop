@@ -9,7 +9,23 @@
 
   N/A
 
--[o] 通过打 patch 的方式修改，而非在 source code 里面修改，或者Makefile；daemonEcho2.c 和 htpasswd.c
+-[x] 通过打 patch 的方式修改，而非在 source code 里面修改，或者Makefile；daemonEcho2.c 和 htpasswd.c
+
+  2018/Jul/03 build_patch.py fix htpasswd.c build.
+
+## 2018/Jul/03 -- mini_httpd
+
+```shell
+$ cd libraries
+$ make
+$ ls -lF
+mini_httpd*
+CGIDebugLogd.py
+daemonEcho2*
+...
+```
+
+
 
 ## 2018/Jul/01 -- CGIDebugLog
 
