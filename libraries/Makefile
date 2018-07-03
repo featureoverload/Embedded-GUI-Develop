@@ -23,7 +23,7 @@ RM   = rm
 EXE_CGIDebugLog := CGIDebugLogd.py daemonEcho2
 
 
-Lib_mini_httpd := mini_httpd
+Lib_mini_httpd := mini_httpd-1.19
 Lib_CGIDebugLog := DebugLog_solution
 Lib_cgi := cgic
 Lib_template := flate
@@ -34,7 +34,7 @@ Lib_template := flate
 .PHONY: all  install $(Lib_CGIDebugLog) clean
 
 ##                           cgic.so           web.so
-all:  $(Lib_CGIDebugLog)
+all:  $(Lib_CGIDebugLog) $(Lib_mini_httpd)
 
 
 
@@ -51,6 +51,16 @@ $(Lib_CGIDebugLog):  DebugLog_solution.zip
 	$(MAKE) --directory=$(Lib_CGIDebugLog)
 	$(COPY) $(Lib_CGIDebugLog)/src/CGIDebugLogd.py $(Lib_CGIDebugLog)/src/daemonEcho2 ./
 
+
+$(Lib_mini_httpd): mini_httpd-1.19.tar.gz
+	$(TAR) $(TARFLAGS_GZ) $^
+	chmod +w mini_httpd-1.19/htpasswd.c
+	./build_patch.py
+	$(MAKE) --directory=mini_httpd-1.19
+	$(COPY) $(Lib_mini_httpd)/mini_httpd ./
+
+
 install:
-	$(MAKE) --directory=$(Lib_CGIDebugLog) install
+## for python lib 
+	$(MAKE) --directory=$(Lib_CGIDebugLog) install 
 
