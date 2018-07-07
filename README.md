@@ -13,6 +13,22 @@
 
   2018/Jul/03 build_patch.py fix htpasswd.c build.
 
+## 2018/Jul/07 -- 避免重复编译
+
+基本使用：
+
+```shell
+$ ## root 路径
+$ make init 
+$ make lib
+$ make
+$
+```
+
+依赖库（CGIDebugLog，mini_httpd）在文件夹下，因为文件夹时间戳和文件的时间戳有些不同，所以看起来应该需要一些妥协方案。
+
+
+
 ## 2018/Jul/03 -- mini_httpd
 
 ```shell

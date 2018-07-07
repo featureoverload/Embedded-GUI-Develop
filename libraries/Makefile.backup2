@@ -31,31 +31,24 @@ MOVE = mv
 COPY = cp
 RM   = rm 
 
-EXE_CGIDebugLog := CGIDebugLogd.py
-EXE_MINIHTTPD   := mini_httpd
+EXE_CGIDebugLog := CGIDebugLogd.py daemonEcho2
+
 
 Lib_mini_httpd := mini_httpd-1.19
 Lib_CGIDebugLog := DebugLog_solution
-
 Lib_cgi := cgic
 Lib_template := flate
 ## cgic, flate, cgi-debug => **.a/so web.a
 
 #Libraries := $(Lib_mini_httpd) $(Lib_CGIDebugLog) $(Lib_cgi) $(Lib_template)
 
-.PHONY: all  install clean $(Lib_CGIDebugLog) $(Lib_mini_httpd)
+.PHONY: all  install $(Lib_CGIDebugLog) clean
 
 ##                           cgic.so           web.so
-all:  $(EXE_MINIHTTPD) $(EXE_CGIDebugLog)
-
-$(EXE_MINIHTTPD): $(Lib_mini_httpd)
+all:  $(Lib_CGIDebugLog) $(Lib_mini_httpd)
 
 
-$(EXE_CGIDebugLog): daemonEcho2
-	$(COPY) $(Lib_CGIDebugLog)/src/CGIDebugLogd.py ./
 
-daemonEcho2: $(Lib_CGIDebugLog)
-	$(COPY) $(Lib_CGIDebugLog)/src/daemonEcho2 ./
 ### 下面：
 ### 应用程序 与 库链接 的依存关系
 ### -------
@@ -64,12 +57,16 @@ daemonEcho2: $(Lib_CGIDebugLog)
 ###
 
 
-$(Lib_CGIDebugLog):
+$(Lib_CGIDebugLog):  DebugLog_solution.zip
+	$(UNZIP) DebugLog_solution.zip 
 	$(MAKE) --directory=$(Lib_CGIDebugLog)
-	
+	$(COPY) $(Lib_CGIDebugLog)/src/CGIDebugLogd.py $(Lib_CGIDebugLog)/src/daemonEcho2 ./
 
 
-$(Lib_mini_httpd):
+$(Lib_mini_httpd): mini_httpd-1.19.tar.gz
+	$(TAR) $(TARFLAGS_GZ) $^
+	chmod +w mini_httpd-1.19/htpasswd.c
+	./build_patch.py
 	$(MAKE) --directory=mini_httpd-1.19
 	$(COPY) $(Lib_mini_httpd)/mini_httpd ./
 

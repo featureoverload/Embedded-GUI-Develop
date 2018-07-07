@@ -1,6 +1,9 @@
 # Makefile
+# 
 #
-#
+###
+###
+###
 
 MAKE = make
 
@@ -36,15 +39,9 @@ Libraries      := libraries
 
 CGI_PROGRAM = src
 
-.PHONY: $(Libraries) lib all install clean
+.PHONY: $(Libraries) $(CGI_PROGRAM) lib all install clean
 
-###
-### make lib => 需要 mini_httpd;  cgic.a, flate.a, cgiDebugLog.a 
-###
-lib: $(Libraries)
 
-$(Libraries):
-	$(MAKE) --directory=$@
 
 ###
 ### make all ==> 将所有 src/*.c --编译成--> src/*.cgi 
@@ -55,6 +52,12 @@ $(Libraries):
 ## make all = make lib + make src ##+ make Lib&Bin
 all: $(CGI_PROGRAM)
 
+init: $(Libraries)/mini_httpd-1.19.tar.gz $(Libraries)/DebugLog_solution.zip
+	cd $(Libraries) && tar -xzvf mini_httpd-1.19.tar.gz
+	cd $(Libraries) && chmod +w mini_httpd-1.19/htpasswd.c && ./build_patch.py
+
+	cd $(Libraries) && unzip DebugLog_solution.zip
+#	... else ...
 
 ###
 ### 应用程序 与 库链接 的依存关系
@@ -70,8 +73,20 @@ $(CGI_PROGRAM):
 ## 
 ## ^^ 以上， 调用了 src/Makefile & libraries/Makefile
 ##
+
 #$(Lib&Bin_DIR):
 #	$(MAKE) --directory=$@
+
+
+###
+### make lib => 需要 mini_httpd;  cgic.a, flate.a, cgiDebugLog.a 
+###
+lib: $(Libraries)
+
+$(Libraries):
+	$(MAKE) --directory=$@
+
+
 
 
 ###
