@@ -6,22 +6,23 @@
 
 CC = gcc
 
+object = CGIDebugLogc.o
 
 .PYTHON: all clean
 
+$(object): CGIDebugLogc.c CGIDebugLogc.h
+	$(CC) -c $< -o $@
+
 all: libCGIDebugLogc.a
-	@echo "==== build >> libCGIDebugLogc.a finish! ====\n"
+	@echo "$'\033[0;46m==== build >> libCGIDebugLogc.a finish! ====\033[0m\n"
 
 AR = ar
-ARFLAGS = rv
+ARFLAGS = rvu
 libCGIDebugLogc.a: libCGIDebugLogc.a(CGIDebugLogc.o)
 
 libCGIDebugLogc.a(CGIDebugLogc.o): CGIDebugLogc.o
 	$(AR) $(ARFLAGS) $@ $?
 
-
-CGIDebugLogc.o: CGIDebugLogc.c CGIDebugLogc.h
-	$(CC) -c $< -o $@
 
 
 ## use default rule

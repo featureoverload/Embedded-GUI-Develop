@@ -61,7 +61,7 @@ CPPFLAGS += $(MACRO_FLAGS)
 
 
 AR      = ar
-ARFLAGS	= rv
+ARFLAGS	= rvu
 ###
 ### library of basic part:
 ###

@@ -1,17 +1,17 @@
+#
+# filename : Makefile
+# author   : Joseph Lin
+# E-mail   : joseph.lin@aliyun.com
+# 
+# reference: 《GNU make 项目管理》 - CH6
+#
+### 
+### 2018/Jul/08 add CGIDebugLogc lib
+### 
 
 ###
-### filename : Makefile
-### author   : Joseph Lin
-### E-mail   : joseph.lin@aliyun.com
-### 
-### reference: 《GNU make 项目管理》 - CH6
-###
-### 
-### 
-
-###
-### program tree:
-###   /
+###  program tree:
+### DebugLog_solution/
 ###   |-- Makefile
 ###   |-- LINUX-C_daemon/
 ###   |       |--- Makefile 
@@ -29,11 +29,20 @@
 ###   |        |-- Makefile  ## build test_become_daemon* 出来！
 ###   |        `-- test_become_daemon.c
 ###   |
-###   |-- src/
+###   |-- src/                   ## <== $(CGIDebugLog)
 ###   |    |-- Makefile
-###   |    |-- daemonEcho2.c
-###   |    |-- CGIDebugLogd.py
-###   |     `- socketClient.py
+###   |    |
+###   |    |-- CGIDebugLogd/
+###   |    |     |-- daemonEcho2.c
+###   |    |     |-- CGIDebugLogd.py
+###   |    |      `- Makefile
+###   |    |-- socketClient.py
+###   |    |
+###   |     `- CGIDebugLogc/
+###   |          |-- CGIDebugLogc.c
+###   |          |-- CGIDebugLogc.h
+###   |          |-- Makefile           ## build out libCGIDebugLogc.a
+###   |           `- Examples/main.c
 ###   | 
 ###    `- others.
 ###
@@ -50,20 +59,28 @@ lib_echo2tmnl     := lib/echo2tmnl
 
 libraries         := $(lib_become_daemon) $(lib_CGIUtils) $(lib_echo2tmnl)
 
-CGIDebugLogd:= src
+CGIDebugLog:= src
 
-.PHONY: all $(CGIDebugLogd) $(libraries) install clean
-all: $(CGIDebugLogd)
+.PHONY: all $(CGIDebugLog) $(libraries) install clean
+
+
+all: $(CGIDebugLog)
+	cp $(CGIDebugLog)/daemonEcho2 $(CGIDebugLog)/CGIDebugLogd.py ./bin/
+	cp $(CGIDebugLog)/libCGIDebugLogc.a ./bin/
+	@echo "=======  DebugLog_solution/ build finish  ===========\n"
+
 
 
 ###
 ### 应用程序 与 库链接 的依存关系
 ###
-$(CGIDebugLogd): $(libraries)
-
-
-$(CGIDebugLogd) $(libraries):
+$(CGIDebugLog): $(libraries)
 	$(MAKE) --directory=$@
+	@echo "----  $(CGIDebugLog) build finish  -----\n"
+
+$(libraries):
+	$(MAKE) --directory=$@
+	@echo "----  $(libraries) build finish  -----\n"
 ###
 ### ^ 以上，调用了 test_basic_daemon/Makefile
 ###    和   调用了 lib/become_daemon/Makefile
@@ -76,11 +93,12 @@ install:
 
 ##### $ make clean 将会是一个问题 #####
 clean:  
-	$(MAKE) --directory=$(CGIDebugLogd) clean && echo "\n"
+	$(MAKE) --directory=$(CGIDebugLog) clean && echo "\n"
 #	$(MAKE) --directory=$(libraries) clean
 	$(MAKE) --directory=$(lib_become_daemon) clean && echo "\n"
 	$(MAKE) --directory=$(lib_CGIUtils) clean && echo "\n"
 	$(MAKE) --directory=$(lib_echo2tmnl) clean && echo "\n"
+	rm -f ./bin/*
 
 ## help - The default goal
 MAKE = make

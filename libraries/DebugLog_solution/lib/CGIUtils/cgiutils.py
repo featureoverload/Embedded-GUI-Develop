@@ -3,7 +3,7 @@
 """
 #
 # file name: cgiutils.py
-# author   : Huaxing Lin
+# author   : Joseph Lin
 # E-mail   : joseph.lin@aliyun.com
 #
 # =======================================
