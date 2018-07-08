@@ -63,7 +63,7 @@ init: $(Libraries)/mini_httpd-1.19.tar.gz $(Libraries)/DebugLog_solution.zip
 ### 应用程序 与 库链接 的依存关系
 ### (*.cgi)    (mini_httpd, cgiDebugLogd, cgic.so web.so)
 ###
-$(CGI_PROGRAM): lib bin $(Libraries)
+$(CGI_PROGRAM): $(Libraries) lib bin 
 
 ###
 ### 以下编译了 *.cgi， 并且确保依赖库要被编译。
