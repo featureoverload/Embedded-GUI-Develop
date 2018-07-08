@@ -12,6 +12,7 @@
 ## basic usage
 
 ```shell
+ $ ######    make mini_httpd work   #######
  $ cd <Path>/github-Embedded-GUI-Develop
  $ cp ./libraries/mini_httpd ./WorkPath/bin/ 
  $ cp ./WorkPath/etc/mini_httpd/mini_httpd.config ./WorkPath/etc/mini_httpd/mini_httpd.conf

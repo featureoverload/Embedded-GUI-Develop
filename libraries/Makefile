@@ -5,11 +5,11 @@
 ###
 ### ------ 
 ###   v0.0.1
-### change log: build CGIDebugLogd ç›¸å…³
+### change log: build CGIDebugLogd Ïà¹Ø
 ###
 ### ------
 ###   v0.0.2
-### change log: build mini_httpd ç›¸å…³
+### change log: build mini_httpd Ïà¹Ø
 ### 
 ### ------
 ###
@@ -49,32 +49,48 @@ Lib_template := flate
 all:  $(EXE_MINIHTTPD) $(EXE_CGIDebugLog)
 
 $(EXE_MINIHTTPD): $(Lib_mini_httpd)
-
+	$(COPY) $(Lib_mini_httpd)/mini_httpd ./
+	@echo "$'\033[0;46m----- finish build mini_httpd! ---------\033[0m\n"
 
 $(EXE_CGIDebugLog): daemonEcho2
 	$(COPY) $(Lib_CGIDebugLog)/src/CGIDebugLogd.py ./
+	@echo "$'\033[0;46m----- finish build CGIDebugLog! ---------\033[0m\n"
+
 
 daemonEcho2: $(Lib_CGIDebugLog)
 	$(COPY) $(Lib_CGIDebugLog)/src/daemonEcho2 ./
-### ä¸‹é¢ï¼š
-### åº”ç”¨ç¨‹åº ä¸ åº“é“¾æ¥ çš„ä¾å­˜å…³ç³»
+### ÏÂÃæ£º
+### Ó¦ÓÃ³ÌĞò Óë ¿âÁ´½Ó µÄÒÀ´æ¹ØÏµ
 ### -------
-### è¿™é‡Œï¼Œåº”ç”¨ç¨‹åºå¹¶éå¦‚æ­¤ï¼Œåº”ç”¨ç¨‹åºåœ¨ make lib çš„æ—¶å€™æ²¡æœ‰é©¬ä¸Šç¼–è¯‘ï¼Œ
-### make lib ç¼–è¯‘å‡ºåº“ï¼Œå¹¶ä¸”copy åˆ°ä¸€å®šçš„ä½ç½®ï¼Œæä¾› åº”ç”¨ç¨‹åºç¼–è¯‘å’Œè¿è¡Œç¯å¢ƒã€‚
+### ÕâÀï£¬Ó¦ÓÃ³ÌĞò²¢·ÇÈç´Ë£¬Ó¦ÓÃ³ÌĞòÔÚ make lib µÄÊ±ºòÃ»ÓĞÂíÉÏ±àÒë£¬
+### make lib ±àÒë³ö¿â£¬²¢ÇÒcopy µ½Ò»¶¨µÄÎ»ÖÃ£¬Ìá¹© Ó¦ÓÃ³ÌĞò±àÒëºÍÔËĞĞ»·¾³¡£
 ###
 
 
 $(Lib_CGIDebugLog):
 	$(MAKE) --directory=$(Lib_CGIDebugLog)
+	@echo "\n"
 	
 
 
 $(Lib_mini_httpd):
 	$(MAKE) --directory=mini_httpd-1.19
-	$(COPY) $(Lib_mini_httpd)/mini_httpd ./
+	@echo "\n"
+
+	
 
 
 install:
 ## for python lib 
 	$(MAKE) --directory=$(Lib_CGIDebugLog) install 
+
+
+clean:
+	rm -f daemonEcho2 mini_httpd CGIDebugLogd.py
+
+clean_all:
+	rm -f daemonEcho2 mini_httpd CGIDebugLogd.py
+	$(MAKE) --directory=mini_httpd-1.19 clean
+	$(MAKE) --directory=DebugLog_solution clean
+
 

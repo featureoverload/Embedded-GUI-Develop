@@ -17,6 +17,50 @@
 
   2018/Jul/03 build_patch.py fix htpasswd.c build.
 
+## 2018/Jul/08
+
+### 新增 CGIDebugLogc 测试
+
+1. 确保 *2018/Jul/08 -> CGIDebugLogd 运行* 一节中的 CGIDebugLogd.py 在后台运行。
+
+2. 编译出 CGIDebugLogc 的测试用例：
+
+   ```shell
+   $ cd libraries/DebugLog_solution/src/CGIDebugLogc/
+   $ make
+   $ ## ^ 编译出 libCGIDebugLogc.a
+   $ 
+   $ make tester
+   ```
+
+3. 运行测试用例：
+
+   ```shell
+   $ pwd
+   <path>/Embedded-GUI-Develop/libraries/DebugLog_solution/src/CGIDebugLogc/
+   $ ## 在 2. 的路径基础上。
+   $ ./tester  ## 可以通过其它终端运行（路径要和上面pwd一样）
+   $ ## 可以在运行 CGIDebugLogd.py 打开的终端中看到输出！
+   ```
+
+     
+
+### CGIDebugLogd 运行
+
+  更新过了 daemonEcho2.c 为了适合 WorkPath/ 目录结构
+
+  使 CGIDebugLogd.py 正常运行的命令：
+
+```shell
+$ cp ./libraries/daemonEcho2 ./WorkPath/bin/
+$ cp ./libraries/CGIDebugLogd.py ./WorkPath/bin/
+$ 
+$ cd WorkPath
+$ ./bin/daemonEcho2 `tty`
+```
+
+
+
 ## 2018/Jul/07
 
 ### mini_httpd + CGI 运行测试
