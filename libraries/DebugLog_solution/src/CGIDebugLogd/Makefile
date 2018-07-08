@@ -19,13 +19,17 @@ CPPFLAGS = -I ../../include
 CPPFLAGS += $(MACRO_FLAGS)
 
 
-.PHONY: all clean
+.PHONY: all clean getdaemonEcho2
 #all: test_become_daemon
 #test_become_daemon: ../lib/become_daemon/libbecome_daemon.a
 
 all: $(EXE)
 $(EXE): ../../lib/become_daemon/libbecome_daemon.a
 	$(CC) $(CPPFLAGS) daemonEcho2.c $^ -o daemonEcho2
+	@echo "$'\033[0;46m------ $(EXE) build finish!  ------\033[0m\n"
+
+getdaemonEcho2: ../../lib/become_daemon/libbecome_daemon.a
+	$(CC) $(CPPFLAGS) daemonEcho2.c $^ -o ../daemonEcho2
 	@echo "$'\033[0;46m------ $(EXE) build finish!  ------\033[0m\n"
 
 clean:

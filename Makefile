@@ -114,3 +114,5 @@ clean:
 clean_all:
 	$(MAKE) --directory=$(Libraries) clean_all
 	$(MAKE) --directory=$(CGI_PROGRAM) clean
+	rm -f lib/*
+	rm -f bin/*

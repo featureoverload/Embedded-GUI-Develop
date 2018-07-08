@@ -32,11 +32,13 @@ clean:
 	$(MAKE) --directory=$(CGIDebugLogc) clean
 	$(MAKE) --directory=$(CGIDebugLogd) clean
 
-daemonEcho2: $(CGIDebugLogd)
-	cp $(CGIDebugLogd)/daemonEcho2 ./
+daemonEcho2:
+	$(MAKE) --directory=$(CGIDebugLogd) getdaemonEcho2
+# daemonEcho2: $(CGIDebugLogd)/daemonEcho2
+# 	cp $(CGIDebugLogd)/daemonEcho2 ./
 CGIDebugLogd.py: $(CGIDebugLogd)/CGIDebugLogd.py
 	cp $< ./
-$(CGIDebugLogd):
+$(CGIDebugLogd)/daemonEcho2:
 	$(MAKE) --directory=$@
 
 libCGIDebugLogc.a: $(CGIDebugLogc)/CGIDebugLogc.o
