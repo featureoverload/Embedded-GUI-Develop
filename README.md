@@ -25,8 +25,32 @@
 $ make init
 $ make lib
 $ make bin
-$
+$ 
+$ cp bin/* WorkPath/bin/
+$ ## 修改 mini_httpd.conf 文件
+$ ## 运行 mini_httpd -> 查看 WorkPath/README.md
+$ ## 运行 CGIDebugLogd.py 在后台 
+$ ##   -> 查看下面的“CGIDebugLogd 运行” 这一节
+$ 
+$ ## 运行测试
+$ ## 参考 2018/Jul/09->*.cgi 使用 libCGIDebugLogc.a 这一节
 ```
+
+
+
+## 2018/Jul/09
+
+### *.cgi 使用 libCGIDebugLogc.a 测试
+
+测试文件为： `src/hello-CGIDebugLog.c` , 
+
+编译出 *.cgi：
+
+  `src/ $ gcc hello-CGIDebugLog.c ../lib/libCGIDebugLogc.a -o hello-CGIDebugLog.cgi` 
+
+手动安装：`/ $ mv ./src/hello-CGIDebugLog.cgi ./WorkPath/var/www/cgi-bin/` 
+
+打开浏览器测试（在mini_httpd 和 CGIDebugLogd.py 正常运行的情况下）。
 
 
 

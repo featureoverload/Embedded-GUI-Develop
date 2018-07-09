@@ -20,7 +20,8 @@
  $ ## 将 .conf 文件的路径改成实际环境的工作路径。 
  $
  $ cd <Path>/github_Embedded-GUI-Develop/WorkPath
- $ ./bin/mini_httpd -C ./etc/mini_httpd/mini_httpd.conf
+ $ sudo ./bin/mini_httpd -C ./etc/mini_httpd/mini_httpd.conf
+ $ ## ^ 用 root 权限运行好一点。
  $ 
 ```
 
