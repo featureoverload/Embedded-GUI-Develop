@@ -17,6 +17,19 @@
 
   2018/Jul/03 build_patch.py fix htpasswd.c build.
 
+## summary
+
+编译和运行总览：
+
+```shell
+$ make init
+$ make lib
+$ make bin
+$
+```
+
+
+
 ## 2018/Jul/08
 
 ### 新增 CGIDebugLogc 测试
@@ -43,7 +56,6 @@
    $ ## 可以在运行 CGIDebugLogd.py 打开的终端中看到输出！
    ```
 
-     
 
 ### CGIDebugLogd 运行
 
