@@ -54,7 +54,8 @@ all: $(CGI_PROGRAM)
 
 init: $(Libraries)/mini_httpd-1.19.tar.gz $(Libraries)/DebugLog_solution.zip
 	cd $(Libraries) && tar -xzvf mini_httpd-1.19.tar.gz
-	cd $(Libraries) && chmod +w mini_httpd-1.19/htpasswd.c && ./build_patch.py
+	cd $(Libraries) && chmod +w mini_httpd-1.19/htpasswd.c
+	cd $(Libraries)	&& python3 build_patch.py
 
 ## DebugLog_solution.zip out of date. there is DebugLog_solution/ on trunk.
 #	cd $(Libraries) && unzip DebugLog_solution.zip

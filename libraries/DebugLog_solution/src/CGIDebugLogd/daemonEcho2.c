@@ -95,12 +95,30 @@ char *path_alloc(size_t *sizep){
 /**
  *  Global Variables
  */
-int doDebug = 1;
+
+///// josutils.h
+// typedef enum { TRUE = 0, FALSE } Boolean_t;	/* defined in tlpi_hdr.h */
+
+/* EXIT_SUCCESS was defined on stdlib.h */
+typedef enum EXIT_CODE { 
+	BUILDIN_FUNC_ERR = 209,
+	CMD_ERR = 210,
+	FIEL_IO_ERR = 219,
+	COMMON_ERR = 1,
+	FUNC_ERR = -1,
+	SERIOUS_ERR = 911
+ } EXIT_CODE_t;
+
+//// END josutils.h  ///////
+
+int doDebug = FALSE;
+
+
+
 
 /**
  *  Funcitons define
  */
-int foo();
 //int run(int argc, char *argv[]);
 int run(int argc, char *argv[], char *ptr);
 
@@ -114,22 +132,26 @@ int main( int argc, char *argv[] )
 		exit(219);
 	}
 	#else
-	if ( argc != 2 ){
-		fprintf ( stderr, "usage: $ %s <TTY device>\n", argv[0] );
+	if ( argc < 2 ){
+		fprintf ( stderr, "usage: $ %s <TTY device> [option...]\n", argv[0] );
 		fprintf ( stderr, "\t like: $ %s /dev/ttyS0\n", argv[0]);
-		exit(219);
+		fprintf ( stderr, "\n\t [Option...]: Enter the path which is CGIDebugLogd.py file exist on. \n" 
+						  "\t this program will default open CGIDebugLogd.py on the same PATH with \"%s\"! \n\n", argv[0]);
+		exit(CMD_ERR);
 	}
 	#endif
 
 
 		char   *ptr=NULL;
 		size_t size;
-	if (doDebug){
+	
 		ptr = path_alloc(&size);                         /* APUE funciton. */
 		if (getcwd(ptr, size) == NULL){
 			fprintf ( stderr, "getcwd() failed!\n");
-			exit(209);
+			exit(BUILDIN_FUNC_ERR);
 		}
+
+	if (doDebug){
 		fprintf (stdout, "cwd = %s\n", /*current work path*/ptr);
 	}
 
@@ -225,29 +247,41 @@ int run ( int argc, char *argv[] )
 	#endif
 int run ( int argc, char *argv[], char *ptr )
 {
-	char  IsExeclError = 0;
+	char  IsExeclError = EXIT_SUCCESS;
 	char program_path[218] = {'\0'};
-	// 经过 daemon 化之后， work path 变成了 “/”; 后面“APP 规范化”之后， 会修正的。
-	snprintf ( program_path, sizeof(program_path), "%s%s", ptr, CGIDEBUGLOG_SRC_RELATIVE_PATH);
+	/*
+	 * 经过 daemon 化之后， work path 变成了 “/”; 后面“APP 规范化”之后， 会修正的。
+	 */
+	/// argc could not < 2
+	if( argc = 2) { // default CGIDebugLogd.py path. 
+		snprintf ( program_path, sizeof(program_path), "%s%s", ptr, CGIDEBUGLOG_SRC_RELATIVE_PATH);
+	}else { // Specfaction path.
+		snprintf( program_path, sizeof(program_path), "%s", argv[2] ); // 0:programName 1:TTY  2:PATH
+		// - [o] joseph, check CGIDebugLogd.py exist on the path.
+		// ...code...
+	}
 
+	/*
+	 * APP 规范化， 配置 log 路径。
+	 */
 	FILE *pErrorFile=NULL;
 	pErrorFile = fopen( "/tmp/debug.log", "a+" );
 	if ( pErrorFile == NULL )   exit(1);
 	fprintf(pErrorFile, "\nprogram_path: %s\n", program_path );
 	fclose(pErrorFile);
 
-
+	/*
+	 * equal to ==>  $ python3 CGIDebugLogd.py /dev/ttyS0 
+	 */
 	// IsExeclError = execl( "/usr/bin/python3", "/usr/bin/python3", program_path, argv[1], argv[2],NULL);
 	IsExeclError = execl( "/usr/bin/python3", "/usr/bin/python3", program_path, argv[1], NULL);
 	if (IsExeclError == -1 ){
-		exit(209);
+		exit(SERIOUS_ERR);
 	}
-	return 0;
+
+	return EXIT_SUCCESS;
 }
 #endif
 
-int foo(){
-	return 0;
-}
 
 
