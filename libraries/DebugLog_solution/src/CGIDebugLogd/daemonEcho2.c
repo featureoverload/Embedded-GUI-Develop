@@ -109,6 +109,36 @@ typedef enum EXIT_CODE {
 	SERIOUS_ERR = 911
  } EXIT_CODE_t;
 
+int getCMDPath( char cmdData[], size_t cmdDataLen ){
+	char *PathArray = cmdData;
+
+	char pareseCMDRet[256] = {'\0'};
+	char programName[256] =  {'\0'};
+	// char rule
+	if ( ( PathArray[0]=='.' ) && ( PathArray[1]='/' ) ){// continue
+		int point = 0;
+		for (;;){
+			point = strlen(pareseCMDRet)+1;
+			sscanf(&(PathArray[2+point-1]), "%[^/]%s", &(pareseCMDRet[point]), programName );
+			if ( ( pareseCMDRet[point]!='\0' )  ){
+				pareseCMDRet[point-1] = '/';
+				if (  (programName[0] == '\0') ){
+					memset(&(pareseCMDRet[point-1]), 0, strlen(&(pareseCMDRet[point-1])+1));
+					break;
+				}
+				memset(programName, 0, 256);
+			}
+		}
+	}else{
+		fprintf (stderr, "can't parese command.\n\n");
+		exit(COMMON_ERR);
+	}
+	snprintf(PathArray, cmdDataLen, "%s",  pareseCMDRet );
+
+	return 0;
+}
+
+
 //// END josutils.h  ///////
 
 int doDebug = FALSE;
@@ -155,11 +185,18 @@ int main( int argc, char *argv[] )
 		fprintf (stdout, "cwd = %s\n", /*current work path*/ptr);
 	}
 
+	char PathArray[256] = {'\0'};
+	snprintf(PathArray, 256, "%s", argv[0] );
+	getCMDPath(PathArray, 256);
+
+	char absolutePath[512] = {'\0'};
+	snprintf(absolutePath, 512, "%s%s", ptr, PathArray );
+	free(ptr);
 
 	becomeDaemon(0);
 
 	//run(argc, argv);
-	run(argc, argv, ptr);
+	run(argc, argv, absolutePath);
 
 	exit(0);
 }
@@ -236,7 +273,8 @@ int run ( int argc, char *argv[] )
 		 *     |---- var/
 		 *     `---- etc/
 		 */
-		#define CGIDEBUGLOG_SRC_RELATIVE_PATH "/bin/CGIDebugLogd.py"
+		#define CGIDEBUGLOG_SRC_RELATIVE_PATH 	"/bin/CGIDebugLogd.py"
+		#define CGIDEBUGLOG_PROGRAM_NAME		"CGIDebugLogd.py"
 		/* $ cd WorkPath
 		 * $ ./bin/daemonEcho2 `tty`
 		 * pwd=> /home/USER/<path>/WorkPath
@@ -254,7 +292,8 @@ int run ( int argc, char *argv[], char *ptr )
 	 */
 	/// argc could not < 2
 	if( argc = 2) { // default CGIDebugLogd.py path. 
-		snprintf ( program_path, sizeof(program_path), "%s%s", ptr, CGIDEBUGLOG_SRC_RELATIVE_PATH);
+		// snprintf ( program_path, sizeof(program_path), "%s%s", ptr, CGIDEBUGLOG_SRC_RELATIVE_PATH);
+		snprintf ( program_path, sizeof(program_path), "%s/%s", ptr, CGIDEBUGLOG_PROGRAM_NAME);
 	}else { // Specfaction path.
 		snprintf( program_path, sizeof(program_path), "%s", argv[2] ); // 0:programName 1:TTY  2:PATH
 		// - [o] joseph, check CGIDebugLogd.py exist on the path.
