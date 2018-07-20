@@ -9,23 +9,38 @@
 #include <stdlib.h>
 #include <string.h>
 
+// #define __EMBEDDED_PLATFORM /* 仅在嵌入式平台在编译运行时注释掉这一行。 */
+#ifndef __EMBEDDED_PLATFORM
+	#include <stdarg.h>
 
-int tcdbg_printf(char *message, int msg_len);
+	int tcdbg_printf(char *message, int msg_len);
+
+	void CGI_DEBUG_LOG(const char *fmt, ...){
+		va_list ap;
+		va_start(ap, fmt);
+
+	char dbg_message[128] = {'\0'};
+		/*ret =*/ vsprintf(dbg_message, fmt, ap);
+
+	tcdbg_printf(dbg_message, strlen(dbg_message));
+
+		va_end(ap);
+	}
+#else
+	#define CGI_DEBUG_LOG( fmt, ...) /* other code... */
+#endif
+
 
 int main(int argc, char const *argv[])
 {
-	char dbg_message[128] = {'\0'};
 
-	snprintf(dbg_message, sizeof(dbg_message), "HTTP head");
-	tcdbg_printf(dbg_message, strlen(dbg_message));
+	CGI_DEBUG_LOG( "HTTP head" );
 	// HTTP head
 	//printf("\n")
 
 	printf("\n");
 
-	memset(dbg_message, '\0', sizeof(dbg_message));
-	snprintf(dbg_message, sizeof(dbg_message), "HTTP Contents");
-	tcdbg_printf(dbg_message, strlen(dbg_message));
+	CGI_DEBUG_LOG( "HTTP Contents");
 	// HTTP contents
 	printf("<!DOCTYPE html>\n");
 	printf("<html>\n");
@@ -40,9 +55,7 @@ int main(int argc, char const *argv[])
 	printf("</body>\n");
 	printf("</html>\n");
 
-	memset(dbg_message, '\0', sizeof(dbg_message));
-	snprintf(dbg_message, sizeof(dbg_message), "====  CGI END! ======");
-	tcdbg_printf(dbg_message, strlen(dbg_message));
+	CGI_DEBUG_LOG( "====  CGI END! ======");
 
 	return 0;
 }
