@@ -11,11 +11,15 @@
 
 ## Contents
 
-  **This is Branch for 2018 Jul 19 ToDo**
+  **master**
 
 -[x] 通过打 patch 的方式修改，而非在 source code 里面修改，或者Makefile；daemonEcho2.c 和 htpasswd.c
 
   2018/Jul/03 build_patch.py fix htpasswd.c build.
+
+**注：推荐本地使用 Typora 打开 README.md **
+
+
 
 ## summary
 
@@ -23,18 +27,61 @@
 
 ```shell
 $ make init
-$ make lib
-$ make bin
+$ make LIB
+$ make BIN
+$ 
+$ sudo make install  #### 安装 python 程序所需的库。
 $ 
 $ cp bin/* WorkPath/bin/
 $ ## 修改 mini_httpd.conf 文件
 $ ## 运行 mini_httpd -> 查看 WorkPath/README.md
 $ ## 运行 CGIDebugLogd.py 在后台 
-$ ##   -> 查看下面的“CGIDebugLogd 运行” 这一节
+$ ##   -> 查看下面的 “2018/Jul/21 -> daemonEcho2 change log” 一节。
 $ 
 $ ## 运行测试
-$ ## 参考 2018/Jul/09->*.cgi 使用 libCGIDebugLogc.a 这一节
+$ ## 分为 *.c 的 src/ 和 *.html 的 html/
+$ ## 分别修改 src/Makefile 和  html/Makefile
+$ make src ## or $ make --directory=src
+$ make --directory=src install
+$ 
+$ make html ## or $ make --directory=html
+$ make --directory=html install
+$
 ```
+
+
+
+## 2018/Jul/21
+
+   merge 了 Jul-19-ToDo 这个branch 的 develop，
+
+1. 添加了 CGIC 库
+2. 添加了 Flate 库
+3. daemonEcho2 进程的相关启动做了修改。
+
+### daemonEcho2 change log
+
+**启动方式：**
+
+```shell
+$ ## 运行过 $ cp bin/* WorkPath/bin* 命令之后，
+$ ## 启动方式1：
+$ ./WorkPath/bin/daemonEcho2 `tty`
+$ 
+$ ## 或者不copy bin/ 目录下的 daemonEcho2 程序；
+$ ## 或者将 daemonEcho2 程序拷贝到其它位置
+$ ## 启动方式2：
+$ <daemonEcho2 程序所在路径>/daemonEcho2 `tty` <CGIDebugLogd.py 所在路径>/CGIDebugLogd.py
+$ 
+```
+
+**daemonEcho2 程序说明：**
+
+​    daemonEcho2 至少需要指定输出的终端名，可以使用 `$ tty` 命令查看当前的终端名。
+
+​    默认情况下（只指定输出终端）， daemonEcho2 将假设 CGIDebugLogd.py 所在路径和它同级，然后打开 CGIDebugLogd.py 进程，将其 daemon 化，并且退出自身这个进程。
+
+​    以上述 “启动方式2” 启动，daemonEcho2 将去指定位置运行 CGIDebugLogd.py 进程。 
 
 
 
