@@ -17,7 +17,7 @@
 
   2018/Jul/03 build_patch.py fix htpasswd.c build.
 
-**注：推荐本地使用 Typora 打开 README.md **
+**注：推荐本地使用 Typora 打开 README.md**
 
 
 
@@ -210,4 +210,4 @@ CGIDebugLog automatic finished!
 
 **Note**
 
-DebugLog_solution.zip -> src/daemonEcho2.c is different with local SVN trunk now.
+​    N/A
