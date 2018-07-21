@@ -101,5 +101,6 @@ clean_all:
 	rm -f daemonEcho2 mini_httpd CGIDebugLogd.py libCGIDebugLogc.a
 	$(MAKE) --directory=mini_httpd-1.19 clean
 	$(MAKE) --directory=DebugLog_solution clean
+	@echo "$'\033[0;41m !!!!!!  not remove mini_httpd-1.19 directory  !!!!!!\033[0m\n"
 
 

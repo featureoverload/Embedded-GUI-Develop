@@ -36,10 +36,10 @@ RM   = rm
 ###
 Libraries      := libraries
 
-
+Lib = lib
 CGI_PROGRAM = src
 
-.PHONY: $(Libraries) $(CGI_PROGRAM) lib all install clean bin
+.PHONY: $(Libraries) $(CGI_PROGRAM) LIB all install clean BIN clean_all $(Lib)
 
 
 
@@ -65,7 +65,7 @@ init: $(Libraries)/mini_httpd-1.19.tar.gz $(Libraries)/DebugLog_solution.zip
 ### 应用程序 与 库链接 的依存关系
 ### (*.cgi)    (mini_httpd, cgiDebugLogd, cgic.so web.so)
 ###
-$(CGI_PROGRAM): $(Libraries) lib bin 
+$(CGI_PROGRAM): $(Libraries) LIB BIN 
 
 ###
 ### 以下编译了 *.cgi， 并且确保依赖库要被编译。
@@ -83,14 +83,15 @@ $(CGI_PROGRAM):
 ###
 ### make lib => 需要 mini_httpd;  cgic.a, flate.a, cgiDebugLog.a 
 ###
-lib: $(Libraries)
+LIB: $(Libraries)
 	$(COPY) $(Libraries)/libCGIDebugLogc.a ./lib
+	$(MAKE) --directory=lib all 	## for libcigc.a
 
 $(Libraries):
 	$(MAKE) --directory=$@
 	@echo "======= finished build libraries/  =======\n"
 
-bin:
+BIN:
 	$(COPY) $(Libraries)/mini_httpd ./bin
 	$(COPY) $(Libraries)/CGIDebugLogd.py ./bin
 	$(COPY) $(Libraries)/daemonEcho2 ./bin
@@ -107,14 +108,15 @@ install:
 
 
 clean:
-	$(MAKE) --directory=$(Libraries) clean
+	$(MAKE) --directory=$(Lib) clean
 	$(MAKE) --directory=$(CGI_PROGRAM) clean
-	rm -f lib/*
+	rm -f lib/*.a
 	rm -f bin/*
+
 
 
 clean_all:
-	$(MAKE) --directory=$(Libraries) clean_all
+	$(MAKE) --directory=$(Lib) clean_all
 	$(MAKE) --directory=$(CGI_PROGRAM) clean
-	rm -f lib/*
 	rm -f bin/*
+	

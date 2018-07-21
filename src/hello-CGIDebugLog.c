@@ -9,7 +9,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-// #define __EMBEDDED_PLATFORM /* ����Ƕ��ʽƽ̨�ڱ�������ʱע�͵���һ�С� */
+// #define __EMBEDDED_PLATFORM /* 仅在嵌入式平台在编译运行时注释掉这一行。 */
 #ifndef __EMBEDDED_PLATFORM
 	#include <stdarg.h>
 
