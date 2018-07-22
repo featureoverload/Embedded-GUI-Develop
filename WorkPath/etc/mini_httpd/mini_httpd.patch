@@ -96,8 +96,7 @@ def main():
 	workPathIndex=workPath.find("WorkPath")
 	if workPathIndex!=-1:
 		workPath = workPath[0:workPathIndex+len("WorkPath")]
-	else:
-		print("!!!!  get WorkPath fail!!!!!\n", file=sys.stderr)
+i
 		sys.exit(911)
 
 	conf_fp = None
@@ -112,7 +111,7 @@ def main():
 
 
 	rootRelativePath = "var/www"
-	cgiRelateRootPath = "cig-bin"
+	cgiRelateRootPath = "cgi-bin"
 	pidRelativePath = "var"
 	logRelativePath = "var/log"
 
