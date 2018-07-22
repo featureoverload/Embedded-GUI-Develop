@@ -39,7 +39,10 @@ Libraries      := libraries
 Lib = lib
 CGI_PROGRAM = src
 
-.PHONY: $(Libraries) $(CGI_PROGRAM) LIB all install clean BIN clean_all $(Lib)
+Include = include
+
+.PHONY: $(Libraries) $(CGI_PROGRAM) LIB all install clean BIN clean_all \
+		$(Lib) $(Include)
 
 
 
@@ -95,6 +98,10 @@ BIN:
 	$(COPY) $(Libraries)/mini_httpd ./bin
 	$(COPY) $(Libraries)/CGIDebugLogd.py ./bin
 	$(COPY) $(Libraries)/daemonEcho2 ./bin
+
+
+Include:
+	$(MAKE) --directory=include 
 
 ###
 ### make install ==> 将 src/*cgi html/*.html res/*.json *.js *.css 安装
