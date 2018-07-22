@@ -33,9 +33,13 @@ $
 $ sudo make install  #### 安装 python 程序所需的库。
 $ 
 $ cp bin/* WorkPath/bin/
-$ ## 修改 mini_httpd.conf 文件
-$ ## 运行 mini_httpd -> 查看 WorkPath/README.md
-$ ## 运行 CGIDebugLogd.py 在后台 
+$ 
+$ #### 1. 运行 mini_httpd  ######
+$ ## a. 需要修改 mini_httpd.conf 文件
+$ ## b. 运行 mini_httpd 命令
+$ ## a. & b. 查看 "2018/Jul/22 -> usage" 一节
+$
+$ #### 2. 运行 CGIDebugLogd.py 在后台 
 $ ##   -> 查看下面的 “2018/Jul/21 -> daemonEcho2 change log” 一节。
 $ 
 $ ## 运行测试
@@ -51,12 +55,12 @@ $
 
 
 
-## 2018/Jul/22
+## 2018/Jul/22 - change log
 
 1. 添加 mini_httpd.conf 的自动适应环境patch!
 2. N/A
 
-**Detail:**
+#### Detail:
 
 *1. mini_httpd.conf patch*
 
@@ -71,6 +75,31 @@ $ sudo apt-get install python3-pip    ## 如果还未安装过 pip 的话执行�
 $ 
 $ sudo pip3 install --upgrade jinja2  ## 安装 jinja2 库。
 $
+```
+
+#### *usage*
+
+a. 修改 mini_httpd.conf 文件使适应主机运行环境。
+
+方式一， 使用 mini_httpd.patch：
+
+```shell
+$ ## 按上述 Detail -> 使用 jinja2 库， 安装 jinja2 库。
+$ ./WorkPath/etc/mini_httpd/mini_httpd.patch
+$ 
+```
+
+方式二， 手动修改：
+
+```shell
+$ cp ./WorkPath/etc/mini_httpd/mini_httpd.conf.Reference ./WorkPath/etc/mini_httpd/mini_httpd.conf
+$ ## 修改 mini_httpd.conf 中的路径。
+```
+
+b. 运行 mini_httpd 
+
+```shell
+$ ./WorkPath/bin/mini_httpd -C ./WorkPath/etc/mini_httpd/mini_httpd.conf
 ```
 
 
