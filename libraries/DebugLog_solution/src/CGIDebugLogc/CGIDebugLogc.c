@@ -12,6 +12,8 @@
 #include <arpa/inet.h>
 #include <sys/socket.h> /* should notice the sys/ directory. */
 
+#include <stdarg.h>
+
 #include "CGIDebugLogc.h"
 
 const char *serverIP = "127.0.0.1"; // localhost.
@@ -23,7 +25,7 @@ const int RET_FAILURE = -1;
 /*
  *  msg_len: should not include '\0'; the actually length.
  */
-int tcdbg_printf(char *message, int msg_len){
+int CGIdbg_printf(char *message, int msg_len){
 	int sock = socket(PF_INET, SOCK_STREAM, 0);
 	if ( sock==-1 )	return RET_FAILURE;
 
@@ -43,4 +45,24 @@ int tcdbg_printf(char *message, int msg_len){
 	return RET_SUCCESS;
 }
 
+
+
+int tcdbg_printf(char *message, int msg_len){
+	return CGIdbg_printf(message, msg_len);
+}
+
+#define MAX_DEBUG_LOG_LENGTH 1024
+int CGIPrint(const char *fmt, ...){
+	va_list ap;
+	va_start(ap, fmt);
+
+	char dbg_message[MAX_DEBUG_LOG_LENGTH] = {'\0'};
+	int len = vsprintf( dbg_message, fmt, ap );
+
+	CGIdbg_printf(dbg_message, strlen(dbg_message) );
+
+	va_end(ap);
+
+	return len;
+}
 

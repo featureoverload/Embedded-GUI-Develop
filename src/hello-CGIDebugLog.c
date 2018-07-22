@@ -1,7 +1,11 @@
 /* hello-CGIDebugLog.c
  * 
  * build:
- * gcc hello-CGIDebugLog.c ../lib/libCGIDebugLogc.a -o hello-CGIDebugLog.cgi
+ * gcc -I ../include \
+ 	   hello-CGIDebugLog.c \
+ 	   ../lib/libCGIDebugLogc.a \
+ 	   -o hello-CGIDebugLog.cgi
+ *
  *
  */
 
@@ -9,11 +13,13 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "CGIDebugLogc.h"
+
 // #define __EMBEDDED_PLATFORM /* 仅在嵌入式平台在编译运行时注释掉这一行。 */
 #ifndef __EMBEDDED_PLATFORM
 	#include <stdarg.h>
 
-	int tcdbg_printf(char *message, int msg_len);
+	// int tcdbg_printf(char *message, int msg_len);
 
 	void CGI_DEBUG_LOG(const char *fmt, ...){
 		va_list ap;
@@ -34,13 +40,13 @@
 int main(int argc, char const *argv[])
 {
 
-	CGI_DEBUG_LOG( "HTTP head" );
+	CGIPrint( "HTTP head" );
 	// HTTP head
 	//printf("\n")
 
 	printf("\n");
 
-	CGI_DEBUG_LOG( "HTTP Contents");
+	CGIPrint( "HTTP Contents");
 	// HTTP contents
 	printf("<!DOCTYPE html>\n");
 	printf("<html>\n");
@@ -55,7 +61,7 @@ int main(int argc, char const *argv[])
 	printf("</body>\n");
 	printf("</html>\n");
 
-	CGI_DEBUG_LOG( "====  CGI END! ======");
+	CGIPrint( "====  CGI END! ======");
 
 	return 0;
 }
