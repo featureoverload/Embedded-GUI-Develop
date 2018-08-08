@@ -7,10 +7,15 @@
 
 CC=gcc
 RM=rm -f
+
+COPY=cp
+MOVE=mv
+
 #VPATH=include src lib bin
 VPATH = ../../include
 
-EXE=daemonEcho2
+# EXE=daemonEcho2
+EXE=DaemonEcho2
 
 MACRO_FLAGS = 
 #MACRO_FLAGS += -DSTRICT_DAEMON
@@ -24,13 +29,26 @@ CPPFLAGS += $(MACRO_FLAGS)
 #test_become_daemon: ../lib/become_daemon/libbecome_daemon.a
 
 all: $(EXE)
-$(EXE): ../../lib/become_daemon/libbecome_daemon.a
-	$(CC) $(CPPFLAGS) daemonEcho2.c $^ -o daemonEcho2
-	@echo "$'\033[0;46m------ $(EXE) build finish!  ------\033[0m\n"
+
+# $(EXE): ../../lib/become_daemon/libbecome_daemon.a
+# 	$(CC) $(CPPFLAGS) daemonEcho2.c $^ -o daemonEcho2
+# 	@echo "$'\033[0;46m------ $(EXE) build finish!  ------\033[0m\n"
 
 getdaemonEcho2: ../../lib/become_daemon/libbecome_daemon.a
 	$(CC) $(CPPFLAGS) daemonEcho2.c $^ -o ../daemonEcho2
 	@echo "$'\033[0;46m------ $(EXE) build finish!  ------\033[0m\n"
 
+## src DebugLog_solution libraries Dev 
+getDaemonEcho2: ../../../../WorkPath/lib/python3.5/daemon
+	$(COPY) DaemonEcho2 ../
+	@echo "$'\033[0;46m------ $(EXE) build finish!  ------\033[0m\n"
+
 clean:
-	rm -f $(EXE)
+###
+### usage LINUX-C_daemon
+###
+#	rm -f $(EXE)
+###
+### usage python-daemon
+###
+	@echo "<path>/libraries/DebugLog_solution/src/CGIDebugLogd/ clean!\n"

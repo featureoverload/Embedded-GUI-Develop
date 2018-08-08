@@ -1,0 +1,2771 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<base href="https://pypi.python.org/pypi/python-daemon/#downloads">
+
+      
+      <meta content="text/html; charset=utf-8" http-equiv="content-type">
+      <title>python-daemon 2.1.2 : Python Package Index</title>
+      <meta content="daemon">
+      <meta content="Library to implement a well-behaved Unix daemon process.">
+       <link rel="alternate" type="application/rss+xml" title="RSS: 40 latest updates" href="https://pypi.python.org/pypi?:action=rss">
+       <link rel="alternate" type="application/rss+xml" title="RSS: 40 newest packages" href="https://pypi.python.org/pypi?:action=packages_rss">
+       <style data-savepage-href="/static/styles/screen-switcher-default.css" type="text/css" media="screen">/*savepage-import-url=../styles/styles.css*//* Main Styles for HTML Elements */
+HTML, BODY
+{
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Verdana, Geneva, "Bitstream Vera Sans", Helvetica, sans-serif;
+  font-size: 103%;
+  /* possibly both of these should be removed */
+  color: #000;
+  background-color: #FFF;
+}
+
+IMG
+{
+  border: 0;
+}
+
+H1,H2,H3,H4,H5 {
+  font-family: Georgia, "Bitstream Vera Serif", "New York", Palatino, serif;
+  font-weight:normal;
+  line-height: 1em;
+}
+
+H1
+{
+  font-size: 160%;
+  color: #234764;
+  margin: 0.7em 0 0.7em 0;
+  text-decoration: none;
+}
+
+H1 A {
+  color: #234764;
+}
+
+#intro H1 {
+  font-size:145%;
+}
+H2
+{
+  font-size: 140%;
+
+  color: #366D9C;
+  margin: 0.7em 0 0.7em 0;
+}
+
+H3
+{
+  font-size: 135%;
+  font-style:italic;
+  color: #366D9C;
+  margin: 0.4em 0 0.0em 0;
+}
+
+H4
+{
+  font-size: 125%;
+  color: #366D9C;
+  margin: 0.4em 0 0.0em 0;
+}
+
+/* Logo */
+#logoheader
+{
+  border: 0;
+  margin: 0;
+  padding: 1px;
+  z-index: 1;
+  background-color:#F7F7F7;
+  background-image: /*savepage-url=../images/header-bg2.png*/ url(data:image/png;resource=10;base64,);
+  background-repeat: repeat-x;
+  border-bottom: 1px solid #999999;
+  height:84px;
+  }
+
+#logo
+{
+  width: 165px;
+  margin-top: 20px;
+  margin-left: 50px;
+}
+
+
+
+/* main content section */
+#content-body
+{
+  position: absolute;
+  left: 0;
+  top: 63px;
+  width: 93.9%;
+  z-index: 0;
+  font-size:75%;
+  margin-left:3.0%;
+  min-width:660px;
+}
+
+
+#body-main
+{
+
+  padding: 0 0.55em 40px 0.0em;
+  line-height: 1.4em;
+  font-family: Arial, Verdana, Geneva, "Bitstream Vera Sans", Helvetica, sans-serif;
+  margin-left: 19em;
+}
+
+#body-main {
+  font-size:100%;
+}
+
+
+/* end subnav */
+/* Left Hand Navigation */
+#left-hand-navigation
+{
+  position: absolute;
+  left: 3%;
+  z-index: 1;
+  top: 110px;
+}
+
+#menu
+{
+
+  padding:0;
+  margin-bottom: 5px;
+  width: 16em;
+  font-size:75%;
+}
+
+#menu ul
+{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: 0; 
+}
+
+#menu li
+{
+  display:inline;
+}
+
+#menu ul.level-one a
+{
+  display: block;
+  border: 1px solid #DADADA;
+  padding: 2px 2px 2px 4px;
+  margin: 0 0 4px 1.4em;
+  width: 12em !important;
+  width /**/: 13.4em;
+  font-family: Verdana, Geneva, "Bitstream Vera Sans", Helvetica, sans-serif;
+  color: #4B5A6A;
+  background-image: /*savepage-url=../images/nav-off-bg.png*/ url(data:image/png;resource=15;base64,);
+  background-position: top right;
+  background-repeat: no-repeat;
+  background-color:#F5F5F5;
+  text-transform: uppercase
+  
+}
+
+/*\*//*/
+#menu ul.level-one a
+{
+  width: 13.4em !important;
+}
+/**/ 
+
+#menu ul.level-one a:hover
+{
+  color:black;
+  text-decoration:underline;
+}
+
+#menu ul.level-one a.selected
+{
+  background-image: url(../images/nav-on-bg.png);
+  background-color: #FFFFFF;
+  color:black;
+  border-left:3px solid #FFDB4C;
+}
+
+#menu ul.level-two li:first-child a
+{
+  border-top:0;
+}
+
+#menu ul.level-two a
+{
+
+  background-image: none;
+  background-color: transparent;
+  display: block;
+  border: 0;
+  border-top: 1px solid #DDD;
+  padding: 0.1em;
+  margin: 0 3em 0px 1.5em;
+  color: #3C4B7B;
+  background: none;
+  width: 11em !important;
+  width /**/: 11.2em;  
+  font-family: Arial, Verdana, Geneva, "Bitstream Vera Sans", Helvetica, sans-serif;
+  text-transform: none;
+}
+
+#menu ul.level-two a:hover
+{
+  text-decoration: underline;
+  color: black;
+}
+
+
+#menu ul.level-two a:visited
+{
+  color: #4C3B5B;
+}
+
+#menu ul.level-one ul.level-two a.selected
+{
+  background-image: url(../images/blank.gif);
+  background-color: #FFFFFF;
+  color:#000;
+  border-left:0;
+  
+  font-weight:bold;
+}
+
+#menu li ul
+{
+  margin-bottom: 7px
+}
+
+#menu a
+{
+  text-decoration: none;
+}
+
+#menu ul.level-three a
+{
+
+  display: block;
+  border: 0;
+  padding: 0.1em;
+  margin: 0 3em 0px 1.8em;
+  padding-left:1em;
+  color: #5E72A5;
+  background-image: none;
+  width: 10em !important;
+  width /**/: 11.4em;  
+  font-family: Arial, Verdana, Geneva, "Bitstream Vera Sans", Helvetica, sans-serif;
+  font-size: 95%;
+}
+
+#menu ul.level-three a:hover
+{
+  text-decoration: underline;
+  color: black;
+}
+
+#menu ul.level-three li.selected a.selected
+{
+
+  background-image: url(../images/bullet.gif);
+  background-repeat: no-repeat;
+  background-position: center left;
+  color:#000;
+  font-weight:normal;
+}
+
+#menu ul.level-three
+{
+margin-top:5px;
+}
+
+#left-hand-navigation h4
+{
+  font-family: Arial, Verdana, Geneva, "Bitstream Vera Sans", Helvetica, sans-serif;
+  font-size: 77%;
+  color: #4C5B6B;
+  padding: 0.4em 0 0 1.5em;
+  margin: 0.2em 0 0.3em 0;
+}
+
+#left-hand-navigation h4 a
+{
+  color:#4C5B6B;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+#left-hand-navigation h4 a:hover
+{
+  color:black;
+  text-decoration:underline;
+}
+
+#body-main a:link
+{
+  color: #00A;
+  text-decoration:none;
+  
+}
+
+#body-main a:visited
+{
+  color: #551A8B;
+  text-decoration:none;
+}
+
+#body-main ul, #body-main li {
+  margin-left:1em;
+  padding-left:0;
+}
+
+/* Breadcrumb Trail */
+#breadcrumb
+{
+  vertical-align: middle;
+  color: #3A4969;
+  font-size: 110%;
+  margin-bottom:30px;
+  background-image: /*savepage-url=../images/bullet.gif*/ url(data:image/gif;resource=16;base64,);
+  padding-left:0.9em;
+  background-repeat: no-repeat;
+  background-position: left;
+}
+
+#breadcrumb a:link, #breadcrumb a:visited
+{
+  text-decoration: none;
+  color: #3C4B6B;
+}
+
+#breadcrumb a:hover
+{
+  text-decoration: underline;
+  color: black;
+}
+
+.breadcrumb-separator
+{
+  color:#ACC6D1;
+}
+
+#breadcrumb-text
+{
+  color: #3A4969;
+  font-size: 0.9em;
+  vertical-align: middle;
+}
+
+/* Utility Menu */
+#utility-menu
+{
+  position: absolute;
+  top: 0;
+  right: 4%;
+  height:85px;
+  margin:0;
+  padding:0;
+  width:400px;
+  z-index: 1;
+  font-size: 88%;
+  font-family: Arial, Verdana, Geneva, "Bitstream Vera Sans", Helvetica, sans-serif;
+}
+
+#utility-menu a
+{
+  text-decoration: none;
+  padding: 0 0.5em 0 0.5em;
+  color: #436A85;
+}
+
+#utility-menu a:hover
+{
+  text-decoration: underline;
+}
+
+#utility-menu #screen-switcher
+{
+ display:none; /* will anybody notice? */
+ position:absolute;
+ bottom:6px;
+ right:0;
+ margin:0;
+ padding:0;
+}
+
+#screen-switcher dl {
+  margin:0;
+  padding:0;
+}
+
+/* Search Box */
+#searchbox {
+  position: absolute;
+  white-space: nowrap;
+  top: 16px;
+  right: 0;
+  width: 28.1em;
+  vertical-align: middle;
+  font-weight: bold;
+  text-align: right;
+}
+#searchbox form {
+  display:inline;
+}
+#search
+{
+  color: #A38E60;
+}
+
+#search .input-text
+{
+  margin-top: 3px;
+  border: 1px solid #C4CCCC;
+  background-color: #FFFFFF;
+  vertical-align: top;
+  font-weight:normal;
+  font-size: 116%;
+  width: 11em;
+}
+
+#search .input-button
+{
+  color: #223344;
+  font-family: Arial, Verdana, Geneva, "Bitstream Vera Sans", Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 103%;
+  border-top: 1px solid #C4CCCC;
+  border-left: 1px solid #C4CCCC;
+  border-bottom: 1px solid #6F7777;
+  border-right: 1px solid #6F7777;
+  background-color:  #F8F7F7;
+  background-image: /*savepage-url=../images/button-on-bg.png*/ url(data:image/png;resource=13;base64,);
+  background-repeat: no-repeat;
+  padding: 0px 0.2em 0px 0.2em;
+  margin: 3px 0.4em 0px 0.4em;
+  vertical-align: text-top;
+}
+
+/* Navigation Skipper */
+#skiptonav
+{
+  height: 1px;
+  width: 1px;
+}
+
+/* Document Navigation */
+.homepage-box h4, #document-navigation h4, .externallinks h4
+{
+  font-family: Arial, Verdana, Geneva, "Bitstream Vera Sans", Helvetica, sans-serif;
+  font-size: 94%;
+  font-weight: bold;
+  padding: 3px 0 4px 12px;
+  margin-bottom:8px;
+  border-bottom:3px solid #FFBC29;
+  background-color: #F6F6F6;
+  text-align: left;
+  z-index: 0;
+  -moz-border-radius-topleft: 16px;
+}
+
+#document-navigation
+{
+  font-family: Arial, Verdana, Geneva, "Bitstream Vera Sans", Helvetica, sans-serif;
+  font-size:  98%;
+  text-align: left;
+  color: #3C4B6B;
+  background-color: #F7F6F0;
+  width: 15em;
+  border: 1px solid #B7BECC;
+  z-index: 999;
+  float:right;
+  margin: 0 12px 12px 12px;
+  padding-bottom: 10px;
+  list-style:none;
+  -moz-border-radius-topleft: 12px;
+  -moz-border-radius-bottomright: 12px;
+}
+
+#document-navigation ul
+{
+  list-style: none;
+  display: block;
+  border:0;
+  padding: 0;
+  margin: 0 3em 0 1.1em;
+  color: #3C4B6B;
+  background: none;
+  width: auto;
+  font-size: 103%;
+  font-family: Arial, Verdana, Geneva, "Bitstream Vera Sans", Helvetica, sans-serif; 
+}
+
+#document-navigation a:link, #document-navigation a:visited 
+{
+  color:#3C4B6B;
+  text-decoration:  none;
+}
+
+#document-navigation a:hover
+{
+  color: #000000;
+  text-decoration: underline;
+}
+
+#document-navigation h4 a:link, #document-navigation  h4 a:visited
+{
+  color: #FFFFFF;
+}
+
+
+#document-navigation h4 a:hover
+{
+  color: #FFFFFF;
+
+}
+#document-navigation form {
+  margin:12px;
+}
+#document-navigation input {
+  margin-top:3px;
+}
+input.formbutton {
+  color: #223344;
+  font-family: Arial, Verdana, Geneva, "Bitstream Vera Sans", Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 103%;
+  border-top: 1px solid #C4CCCC;
+  border-left: 1px solid #C4CCCC;
+  border-bottom: 1px solid #6F7777;
+  border-right: 1px solid #6F7777;
+  background-color:  #F8F7F7;
+  vertical-align: text-top;
+}
+.formtextinput {
+  border: 1px solid #C4CCCC;
+  background-color: #FFFFFF;
+  vertical-align: top;
+  font-weight:normal;
+  font-size: 116%;
+}
+#id {
+  width:6em;
+}
+#document-navigation .inputbox {
+  width:6em;
+}
+
+/* vote box */
+div.vote-box p {
+  margin: 8px 0;
+}
+
+div.vote-box {
+  padding-bottom: 0!important;
+}
+
+/* Add this so tables will correctly flow below document navigation div. */
+div#content table {
+  clear:right;
+}
+
+#selecteditem
+{
+  padding-left: 12px;
+  background-image: /*savepage-url=../images/bullet.gif*/ url(data:image/gif;resource=16;base64,);
+  background-repeat: no-repeat;
+  background-position: center left;
+}
+
+#selecteditem a
+{
+  color: #000000;
+}
+
+#selecteditem a:hover
+{
+  text-decoration:none;
+}
+
+.group {
+  background-image: /*savepage-url=../images/bullet.gif*/ url(data:image/gif;resource=16;base64,);
+  background-repeat: no-repeat;
+  background-position: center left;
+  padding-left: 12px;
+}
+/* subnav */
+#document-navigation ul.level-one {
+    padding:0;
+    margin:0 0 0 1.1em;
+    font-size:88%
+}
+#document-navigation ul.level-one li {
+    padding:0;
+    margin:0;
+}
+#document-navigation li ul
+{
+  margin-bottom: 7px
+}
+#document-navigation ul.level-one a
+{
+  border: 0;
+  border-bottom: 1px solid #DDD;
+  color: #3C4B6B;
+  width: 160px;
+  display: block;
+  padding:0;
+  margin:0
+}
+
+#document-navigation ul.level-one a:hover
+{
+  text-decoration: underline;
+  color: black;
+}
+#document-navigation ul.level-one a:link {
+    border:0;
+}
+#document-navigation ul.level-one a:visited {
+    border:0;
+}
+#document-navigation ul.level-one a.selected
+{
+  color:#000;
+  font-weight: bold;
+  border-left:0;
+}
+#document-navigation ul.level-two {
+    padding:0;
+    margin:0;
+}
+#document-navigation ul.level-two li {
+    padding:0;
+    margin:0;
+}
+#document-navigation ul.level-two a
+{
+  border: 0;
+  margin: 0;
+  padding:0 0 0 1em;
+  color: #5E72A5;
+  font-size:97%;
+  display: block;
+  width: 140px;
+  
+}
+
+#document-navigation ul.level-two a:hover
+{
+  text-decoration: underline;
+  color: black;
+}
+
+#document-navigation ul.level-two li.selected a.selected
+{
+
+  background-image: /*savepage-url=../images/bullet.gif*/ url(data:image/gif;resource=16;base64,);
+  background-repeat: no-repeat;
+  background-position: center left;
+  color:#444;
+  border:0;
+  font-size:100%;
+  font-weight:normal;
+  font-style: italic;  
+}
+#document-navigation a
+{
+  text-decoration: none;
+}
+
+/* Quick Links */
+ul.quicklinks
+{
+  margin-left: 0;
+  padding-left: 0;
+  list-style: none;
+  margin: 0 0 0 1.5em;
+  line-height:  1.2em;
+}
+
+ul.quicklinks li
+{
+  padding-left: 16px;
+  background-image: /*savepage-url=../images/bullet.gif*/ url(data:image/gif;resource=16;base64,);
+  background-repeat: no-repeat;
+  background-position: 0 50%;
+  font-family: Arial, Verdana, Geneva, "Bitstream Vera Sans", Helvetica, sans-serif;
+  font-size: 77%;
+}
+
+ul.quicklinks a
+{
+  text-decoration:none;
+  color: #3C4B6B;
+}
+
+ul.quicklinks a:hover
+{
+  text-decoration:underline;
+  color: #000000;
+}
+
+#sidebar-wrapper
+{
+  position:relative;
+  width:100%;
+}
+
+#sidebar {
+  font-size:9px;
+  float:left;
+  top:35px;
+  width:37%;
+  height:auto;
+  padding:0;
+  border:0;
+  margin:0;
+  text-align:left;
+  padding-bottom:10px;
+}
+
+#sidebar2 {
+  font-size:9px;
+  float:left;
+  top:35px;
+  width:25%;
+  height:auto;
+  padding:0;
+  border:0;
+  margin:0;
+  text-align:left;
+  padding-bottom:10px;
+}
+#sidebar3 {
+  font-size:9px;
+  float:left;
+  top:35px;
+  width:37%;
+  border:0;
+  height:auto;
+  padding:0;
+  margin:0;
+  text-align:left;
+  padding-bottom:10px;
+}
+
+.teaser {
+  overflow:hidden;
+  margin-top:5px;
+  border:0;
+  width:100%;
+  text-align:left;
+}
+
+P.news
+{
+   padding-left:12px;
+   margin:0 0 5px 0;
+}
+
+P A:link,P A:visited
+{
+   border-bottom:1px dashed #ccc;
+}
+
+P.news A:link {
+   border-bottom: 1px dashed #21356F;
+}
+P.news A:visited
+{
+   border-bottom:1px dashed #DDD;
+}
+
+#body-main h1.pageheading {
+  margin:48px 0 10px 0;
+}
+#body-main H2.news
+{
+  background-image: /*savepage-url=../images/bullet.gif*/ url(data:image/gif;resource=16;base64,);
+  background-repeat: no-repeat;
+  background-position: center left;
+  padding-left:12px;
+  margin:0;
+  font-size:110%;
+  color: #3C4B6B;  
+  font-weight:normal;
+  font-weight:bold;
+}
+
+#body-main H2.news A:link, #body-main H2.news A:visited
+{
+  text-decoration:none;
+  color: #2A374B;
+  
+}
+
+#body-main ul A:link,#body-main ul A:visited
+{
+   border-bottom:1px dashed #ccc;
+}
+
+/* Document Navigation */
+#document-navigation h4, .homepage-box h4, .externallinks h4
+{
+  font-family: Arial, Verdana, Geneva, "Bitstream Vera Sans", Helvetica, sans-serif;
+  font-size: 94%;
+  font-weight: bold;
+  padding: 3px 0 4px 12px;
+  margin:0 0 0 0;
+  text-align: left;
+  z-index: 0;
+  color:#FFFFFF;
+  -moz-border-radius-topleft: 11px;
+  background-color:#376A94;
+
+}
+
+/* Document Navigation */
+#document-navigation h4 a, .homepage-box h4 a, .externallinks h4 a
+{
+  background: #4C83A3;
+  padding: 0 2px;
+  color: white!important;
+  border: none!important;
+}
+
+/* news specific */
+.news-section {
+  margin-top:15px;
+  min-height:40em;
+  _height:40em;
+}
+.news-section h1 {
+  margin:0 0 10px 0;
+}
+.news-section p {
+   padding-left:12px;
+   margin:0 0 2px 0;
+}
+.news-section .pubdate {
+   padding:0 0 0 12px;
+   margin:0 0 5px 0;
+   color:#696969;
+}
+/* homepage specific */
+#intro {
+  margin-top:5px;
+}
+#intro h1 {
+  margin:0 0 10px 0;
+}
+#intro p {
+  margin-top:10px
+}
+.content-section {
+  margin-top:15px;
+}
+.content-section h1 {
+  margin:0 0 10px 0;
+}
+.content-section p {
+   padding-left:12px;
+   margin:0 0 5px 0;
+}
+.content-section .pubdate {
+   padding:0 0 0 12px;
+   margin:0 0 8px 0;
+   color:#696969;
+}
+#homepage-boxes {
+  width: 250px;
+  float:right;
+  margin: 0 0 6px 30px;
+}
+
+#homepage-boxes .homepage-box, .externallinks
+{
+  font-family: Arial, Geneva, "Bitstream Vera Sans", Helvetica, sans-serif;
+  font-size:  98%;
+  text-align: left;
+  color: #3C4B6B;
+  background-color: #FBFBF7;
+  width: 240px;
+  border: 1px solid #B7BECC;
+  z-index: 999;
+  float:right;
+  padding-bottom: 10px;
+  list-style:none;
+  margin: 6px;
+  -moz-border-radius-topleft: 12px;
+  -moz-border-radius-bottomright: 12px;
+  background-color: #F7F6F0;
+}
+
+#homepage-boxes .homepage-box ul, .externallinks ul
+{
+  list-style: none;
+  display: block;
+  border:0;
+  padding: 0;
+  margin: 0.5em 3em 0 1.1em;
+  color: #3C4B6B;
+  background: none;
+  width: auto;
+  font-family: Arial, Verdana, Geneva, "Bitstream Vera Sans", Helvetica, sans-serif;
+  font-size: 103%;
+  margin-left:0;
+}
+
+#homepage-boxes .homepage-box li, #content-body #body-main .externallinks li {
+  padding-left:15px;
+}
+
+
+#homepage-boxes .homepage-box a:link, .externallinks a:link
+{
+  color: #00A;
+  text-decoration:  none;
+  border-width:0;
+  border-bottom:1px dashed #ccc;  
+}
+
+#homepage-boxes .homepage-box a:visited, .externallinks a:visited 
+{
+  color: #551A8B;
+  text-decoration:  none;
+  border-width:0;
+  border-bottom:1px dashed #ccc;  
+}
+
+#homepage-boxes .homepage-box a:hover, .externallinks a:hover
+{
+  color: #000000;
+  text-decoration: underline;
+}
+
+#homepage-boxes .items, .externallinks .items {
+  padding-left: 12px;
+}
+
+#homepage-boxes .homepage-box .items a:link, .externallinks .items a:link
+{
+  color: #33D;
+  border-bottom:1px dashed #CCC; 
+}
+
+#homepage-boxes .homepage-box .items a:visited, .externallinks .items a:visited
+{
+  color: #854ABB;
+  border-bottom:1px dashed #CCC; 
+}
+
+.homepage-box li.more {
+  text-align:right;
+}
+#skiptonav {
+  position:absolute;
+}
+
+/* additional rest styles */
+
+a.toc-backref {
+  color: inherit ! important;
+}
+
+ul.auto-toc {
+  list-style-type: none;
+}
+
+p.admonition-title {
+  color:red;
+}
+
+pre.literal-block, pre.doctest-block {
+  padding: 10px;
+  font-size: 115%;
+  background-color: #E0E0FF;
+}
+
+div.topic {
+  margin: 2em;
+}
+
+p.topic-title {
+  font-weight: bold;
+}
+
+div.admonition, div.attention, div.caution, div.danger, div.error,
+div.hint, div.important, div.note, div.tip, div.warning {
+  margin: 2em;
+  border-style: solid;
+  border-color: #CCC;
+  border-width: thin 0 0 thin;
+  padding: 0 0.5em 0em 1em;
+}
+
+div.admonition p.admonition-title, div.hint p.admonition-title,
+div.important p.admonition-title, div.note p.admonition-title,
+div.tip p.admonition-title {
+  font-weight: bold;
+  font-size: 110%;
+}
+
+div.attention p.admonition-title, div.caution p.admonition-title,
+div.danger p.admonition-title, div.error p.admonition-title,
+div.warning p.admonition-title {
+  color: red;
+  font-weight: bold;
+  font-size: 110%;
+}
+
+ol.arabic {
+  list-style: decimal }
+
+ol.loweralpha {
+  list-style: lower-alpha }
+
+ol.upperalpha {
+  list-style: upper-alpha }
+
+ol.lowerroman {
+  list-style: lower-roman }
+
+ol.upperroman {
+  list-style: upper-roman }
+
+/* used to remove borders from tables and images */
+.borderless, table.borderless td, table.borderless th {
+  border: 0 }
+
+table.borderless td, table.borderless th {
+  /* Override padding for "table.docutils td" with "! important".
+     The right padding separates the table cells. */
+  padding: 0 0.5em 0 0 ! important }
+
+img.hspaced {
+  padding-left: 1em;
+  padding-right: 1em; }
+
+/* General Table Style ?? built for sigs page */
+
+#sigindex {
+  border-collapse:collapse;
+  width:100%;
+}
+
+#sigindex THEAD {
+  border-bottom: 2px solid #CCC;
+}
+
+#sigindex TH {
+  padding: 0.5em 0.2em 0.5em 0.2em  ;
+  text-align:left;
+}
+
+#sigindex TD {
+  padding: 0.5em 0.2em 0.5em 0.2em  ;
+  border-bottom: 1px dotted #CCC;
+}
+
+blockquote {
+  margin-left:1em;
+  padding-left:1em;
+  border-left:1px solid #CCC;
+}
+
+#sidebar-wrapper {
+display:none;
+}
+
+.more {
+  text-align:right;
+}
+
+#content-body #homepage-boxes a.more {
+  display:block;
+  padding:3px 10px 0 0;
+  border-bottom:0;
+}
+
+.homepage-box div {
+  padding: 0 15px 0 15px;
+}
+
+/* Tweak alignment of the PyCon ad space */
+#house-ad {padding: 0 1px 0 0;}
+#house-ad img {padding-left: 4px}
+
+#utility-menu dl {
+  font-size:90%;
+  text-align:right;
+  font-weight:bold;
+}
+
+#utility-menu dd {
+  display:inline;
+  margin:0;
+  padding:0 0 0 8px;
+  font-weight:normal;
+}
+
+#utility-menu dd a {
+  margin:0;
+  padding:0;
+  color:#888;
+}
+
+#utility-menu dt {
+  display:inline;
+  margin:0;
+}
+
+#siteinfo.homepage-box h1 {
+  font-size:70%;
+  margin:8px 0 0 0 ;
+  padding:0;
+  font-family: Arial, Verdana, Geneva, "Bitstream Vera Sans", Helvetica, sans-serif;
+  font-size: 103%;
+}
+
+#siteinfo.homepage-box div div {
+  margin-left:0;
+  padding:0;
+}
+#footer {
+   margin:3em 0 0 0; 
+   padding:1em 0 1em 0;
+   border-top:1px dotted #CCC;
+   bottom:0;
+   font-size:90%;
+   position:relative;
+   clear:both;
+}
+#footer a:visited, #footer a:link {
+  color:#666;
+  display:inline;
+}
+#footer a:hover {
+  color:#333;
+  display:inline;
+}
+#footer #credits {
+  position:absolute;
+  top:0;
+  right:0;
+  margin:1em 0 0 0; 
+}
+#footer #copyright {
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+ul#iconbar li
+{
+   display: inline;
+ }
+
+
+#searchbox a.reference, #searchbox span.reference {
+position:absolute;
+top:2.9em;
+right:8.3em;
+font-size:85%;
+color:#339;
+text-decoration:none;
+font-weight:normal;
+}
+
+#searchbox a.reference {
+  border-bottom:1px dotted #CCC;
+}
+
+iframe {
+  margin-top:20px;
+}
+
+#content {
+  min-height:500px;
+  _height:500px;
+  font-size:115%;
+}
+
+#content p, #content li {
+  line-height: 1.5;
+}
+
+/* For Meeting Minutes */
+.action {
+  color:#B00;
+}
+
+/* For Meeting Minutes */
+.followup {
+  color: #00A;
+}
+
+/* For Meeting Minutes */
+.progress {
+  color: #090;
+}
+
+/* For Meeting Minutes */
+.minutes-title {
+  text-align: center;
+  font-family: Georgia, "Bitstream Vera Serif", "New York", Palatino, serif;
+  font-size: 160%;
+  font-weight: bold;
+  line-height: 120%;
+  color: #234764;
+  margin-bottom: 1.0em;
+}
+
+#body-main .success p a {
+    display:inline;
+  }
+
+#body-main .success p {
+    margin:4px 8px;
+  }
+
+/* For PEP header blocks */
+.rfc2822 th.field-name {
+  text-align: right;
+  padding-right: 0.5em;
+}
+
+/* For field lists */
+th.field-name {
+  text-align: left;
+  padding-right: 0.5em;
+}
+
+#applications h5 {
+  margin:0;
+  font-family: Arial, Verdana, Geneva, "Bitstream Vera Sans", Helvetica, sans-serif;
+  font-size: 103%;
+  margin: 0 0 0.2em 1em;
+  font-weight:bold;
+}
+
+#content-body #applications h5 a:visited, 
+#content-body #applications h5 a:link {
+  color:#444;
+  border:0;
+}
+
+#applications p {
+  font-size: 85%;
+  width:100%;
+  margin: 0 0 0.5em 0.5em;
+  font-family: Arial, Verdana, Geneva, "Bitstream Vera Sans", Helvetica, sans-serif;
+  padding:0;
+}
+
+.diff-header {
+        font-weight: bold;
+}
+
+.diff-title {
+        background-color: #C0C0C0;
+}
+
+.diff-added {
+        background-color: #E0FFE0;
+        vertical-align: sub;
+}
+
+.diff-removed {
+        background-color: #FFFFE0;
+        vertical-align: sub;
+}
+
+.diff-added span {
+        background-color: #80FF80;
+}
+
+.diff-removed span {
+        background-color: #FFFF80;
+}
+
+/*
+ * This is a set of styles for the embedding of videos such as you see on
+ * youtube.com and such.  The www.python.org/docs/av/5minutes/ page is
+ * collecting these and you'll see them used in the videoframe.html file
+ * there.
+ */
+
+.videoframes {
+  padding: 0;
+  border-collapse: collapse;
+}
+
+.videoframes .title {
+  /* Size and Placement */
+  margin: 0;
+  padding: 3px 6px 2px 6px;
+  width: 668px;
+
+  /* Background and Color */
+  background: #3775a9; /* Python Blue */
+  color: white;
+  -moz-background-clip: -moz-initial;
+  -moz-background-origin: -moz-initial;
+  -moz-background-inline-policy: -moz-initial;
+
+  /* Typeography */
+  font-family: Verdana, sans-serif;
+  font-size: 120%;
+  font-size-adjust: none;
+  font-stretch: normal;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1.3;
+  text-align: left;
+  text-decoration: none;
+}
+
+.videoframes .author {
+  /* Size and Placement */
+  width: 668px;
+  padding: 2px 6px 1px 6px;
+  margin: 0;
+
+  /* Background and Color */
+  background-color: #e0e0e0;
+  background-repeat: repeat-x;
+  color: #000000;
+  -moz-background-clip: -moz-initial;
+  -moz-background-origin: -moz-initial;
+  -moz-background-inline-policy: -moz-initial;
+
+  /* Typeography */
+  font-family: Verdana, sans-serif;
+  font-size: 100%;
+  font-size-adjust: none;
+  font-stretch: normal;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1.3;
+  text-align: left;
+}
+
+.videoframes .abstract {
+  /* Size and Placement */
+  width: 654px;
+  padding: 2px 6px 4px 20px;
+  margin: 0;
+
+  font-style: italic;
+  background-color: #e0e0e0;
+}
+
+.videoframes .viewscreen {
+  /* Size and Placement */
+  width: 640px;
+  padding: 4px 20px 4px 20px;
+  margin: 0;
+
+  /* Background and Color */
+  background-color: #e0e0e0;
+}
+
+.videoframes .followup {
+  /* Size and Placement */
+  width: 640px;
+  margin: 0 0 30px 0;
+
+  font-size: 105%;
+  text-align: center;
+  color: black;
+}
+
+.last, .with-subtitle {
+  margin-bottom: 0 ! important;
+}
+
+div.sidebar {
+  margin-left: 1em;
+  border: 1px solid #999999;
+  padding: 1em;
+  background-color: #F7F7F7;
+  width: 40%;
+  float: right;
+  clear: right;
+}
+
+p.sidebar-title {
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: larger;
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+p.sidebar-title a:link, p.sidebar-title A:visited
+{
+   border-bottom: none;
+}
+
+p.sidebar-subtitle {
+  font-family: sans-serif;
+  font-weight: bold;
+  margin-top: 0;
+  text-align: center;
+}
+
+.clear-right h2 {
+  clear: right;
+}
+
+.align-right {
+  margin-left: 1em;
+}
+
+</style>
+       <style data-savepage-href="/static/styles/netscape4.css" type="text/css" media="screen">#left-hand-navigation
+{
+/*/*//*/
+    position:absolute;
+    left:5px;
+    top:10em;
+    z-index:1;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:0.75em;
+/* */
+}
+
+#left-hand-navigation a
+{
+/*/*//*/
+    color: #3C4B6B;
+/* */
+}
+
+#google
+{
+/*/*//*/
+    display:none;
+/* */
+}
+
+#content-body
+{
+/*/*//*/
+    position:absolute;
+    top:7em;
+    left:9em;
+    width:100%;
+    z-index:1;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:0.82em;
+/* */
+}
+
+#content-body a
+{
+/*/*//*/
+    color: #3C4B6B;
+/* */
+}
+
+#document-navigation
+{
+/*/*//*/
+    position: relative;
+    top:20px;
+    left:0%;
+    z-index:1;
+    padding:10px;
+/* */
+}
+
+#border-corner
+{
+/*/*//*/
+    display:none;
+/* */
+}
+
+#smallcorner
+{
+/*/*//*/
+    display:none;
+/* */
+}
+
+#searchcorner
+{
+/*/*//*/
+    display:none;
+/* */
+}
+
+
+
+#logoheader
+{
+/*/*//*/
+    position:absolute;
+    top:0;
+    border:0 none;
+    left:0;
+    padding:10px;
+    font-size: medium;
+    z-index: 1
+/* */
+}
+
+#logo
+{
+/*/*//*/
+   width:20px;
+/* */
+}
+
+#logolink
+{
+/*/*//*/
+    border:none;
+/* */
+}
+
+#search
+{
+/*/*//*/
+    border: none;
+    padding-top:20px;
+    font-family: Verdana, Helvetica, sans-serif;
+    font-size:0.9em;
+    padding-top:5em;
+/* */
+}
+
+#skiptonav
+{
+/*/*//*/
+    border: 0px none;
+    display:none;
+/* */
+}
+
+#breadcrumb
+{
+/*/*//*/
+    position:absolute;
+    top:0px;
+/* */
+}
+
+#utility-menu
+{
+/*/*//*/
+    position:absolute;
+    top:8em;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:0.75em;
+/* */
+}
+
+#utility-menu a
+{
+/*/*//*/
+    color: #3C4B6B;
+/* */
+}
+
+ul
+{
+/*/*//*/
+    list-style: none;
+    padding:0;
+    margin-left:-20px;
+/* */
+}</style>
+       <style data-savepage-href="/static/styles/print.css" type="text/css" media="print">#left-hand-navigation, #google, #document-navigation, #border-corner, #smallcorner, #searchcorner, #logo, #search, #utility-menu, #skiptonav
+{
+  display:none;
+}
+
+#content-body
+{
+  font-family: Georgia, "Bitstream Vera Serif", "New York", Palatino, serif;
+  font-size:11pt;
+}
+
+#content-body a
+{
+  color: #000000;
+  text-decoration:none;
+  display:inline;
+}
+
+pre {
+  font-size:10pt;
+}
+
+#body-main a
+{
+  font-weight:bold;
+}
+
+
+h1
+{
+  font-size:14pt;
+}
+
+iframe {
+  display:none;
+}
+
+#footer {
+  display:none;
+}
+</style>
+       <link media="screen" href="/static/styles/largestyles.css" type="text/css" rel="alternate stylesheet" title="large text">
+       <link media="screen" href="/static/styles/defaultfonts.css" type="text/css" rel="alternate stylesheet" title="default fonts">
+       <style data-savepage-href="/static/css/docutils.css" type="text/css" media="screen">/*
+:Author: David Goodger (goodger@python.org)
+:Id: $Id: html4css1.css 7056 2011-06-17 10:50:48Z milde $
+:Copyright: This stylesheet has been placed in the public domain.
+
+Default cascading style sheet for the HTML output of Docutils.
+
+See http://docutils.sf.net/docs/howto/html-stylesheets.html for how to
+customize this style sheet.
+*/
+
+/* used to remove borders from tables and images */
+.borderless, table.borderless td, table.borderless th {
+  border: 0 }
+
+table.borderless td, table.borderless th {
+  /* Override padding for "table.docutils td" with "! important".
+     The right padding separates the table cells. */
+  padding: 0 0.5em 0 0 ! important }
+
+.first {
+  /* Override more specific margin styles with "! important". */
+  margin-top: 0 ! important }
+
+.last, .with-subtitle {
+  margin-bottom: 0 ! important }
+
+.hidden {
+  display: none }
+
+a.toc-backref {
+  text-decoration: none ;
+  color: black }
+
+blockquote.epigraph {
+  margin: 2em 5em ; }
+
+dl.docutils dd {
+  margin-bottom: 0.5em }
+
+object[type="image/svg+xml"], object[type="application/x-shockwave-flash"] {
+  overflow: hidden;
+}
+
+/* Uncomment (and remove this text!) to get bold-faced definition list terms
+dl.docutils dt {
+  font-weight: bold }
+*/
+
+div.abstract {
+  margin: 2em 5em }
+
+div.abstract p.topic-title {
+  font-weight: bold ;
+  text-align: center }
+
+div.admonition, div.attention, div.caution, div.danger, div.error,
+div.hint, div.important, div.note, div.tip, div.warning {
+  margin: 2em ;
+  border: medium outset ;
+  padding: 1em }
+
+div.admonition p.admonition-title, div.hint p.admonition-title,
+div.important p.admonition-title, div.note p.admonition-title,
+div.tip p.admonition-title {
+  font-weight: bold ;
+  font-family: sans-serif }
+
+div.attention p.admonition-title, div.caution p.admonition-title,
+div.danger p.admonition-title, div.error p.admonition-title,
+div.warning p.admonition-title {
+  color: red ;
+  font-weight: bold ;
+  font-family: sans-serif }
+
+/* Uncomment (and remove this text!) to get reduced vertical space in
+   compound paragraphs.
+div.compound .compound-first, div.compound .compound-middle {
+  margin-bottom: 0.5em }
+
+div.compound .compound-last, div.compound .compound-middle {
+  margin-top: 0.5em }
+*/
+
+div.dedication {
+  margin: 2em 5em ;
+  text-align: center ;
+  font-style: italic }
+
+div.dedication p.topic-title {
+  font-weight: bold ;
+  font-style: normal }
+
+div.figure {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+div.footer, div.header {
+  clear: both;
+  font-size: smaller }
+
+div.line-block {
+  display: block ;
+  margin-top: 1em ;
+  margin-bottom: 1em }
+
+div.line-block div.line-block {
+  margin-top: 0 ;
+  margin-bottom: 0 ;
+  margin-left: 1.5em }
+
+div.sidebar {
+  margin: 0 0 0.5em 1em ;
+  border: medium outset ;
+  padding: 1em ;
+  background-color: #ffffee ;
+  width: 40% ;
+  float: right ;
+  clear: right }
+
+div.sidebar p.rubric {
+  font-family: sans-serif ;
+  font-size: medium }
+
+div.system-messages {
+  margin: 5em }
+
+div.system-messages h1 {
+  color: red }
+
+div.system-message {
+  border: medium outset ;
+  padding: 1em }
+
+div.system-message p.system-message-title {
+  color: red ;
+  font-weight: bold }
+
+div.topic {
+  margin: 2em }
+
+h1.section-subtitle, h2.section-subtitle, h3.section-subtitle,
+h4.section-subtitle, h5.section-subtitle, h6.section-subtitle {
+  margin-top: 0.4em }
+
+h1.title {
+  text-align: center }
+
+h2.subtitle {
+  text-align: center }
+
+hr.docutils {
+  width: 75% }
+
+img.align-left, .figure.align-left, object.align-left {
+  clear: left ;
+  float: left ;
+  margin-right: 1em }
+
+img.align-right, .figure.align-right, object.align-right {
+  clear: right ;
+  float: right ;
+  margin-left: 1em }
+
+img.align-center, .figure.align-center, object.align-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.align-left {
+  text-align: left }
+
+.align-center {
+  clear: both ;
+  text-align: center }
+
+.align-right {
+  text-align: right }
+
+/* reset inner alignment in figures */
+div.align-right {
+  text-align: inherit }
+
+/* div.align-center * { */
+/*   text-align: left } */
+
+ol.simple, ul.simple {
+  margin-bottom: 1em }
+
+ol.arabic {
+  list-style: decimal }
+
+ol.loweralpha {
+  list-style: lower-alpha }
+
+ol.upperalpha {
+  list-style: upper-alpha }
+
+ol.lowerroman {
+  list-style: lower-roman }
+
+ol.upperroman {
+  list-style: upper-roman }
+
+p.attribution {
+  text-align: right ;
+  margin-left: 50% }
+
+p.caption {
+  font-style: italic }
+
+p.credits {
+  font-style: italic ;
+  font-size: smaller }
+
+p.label {
+  white-space: nowrap }
+
+p.rubric {
+  font-weight: bold ;
+  font-size: larger ;
+  color: maroon ;
+  text-align: center }
+
+p.sidebar-title {
+  font-family: sans-serif ;
+  font-weight: bold ;
+  font-size: larger }
+
+p.sidebar-subtitle {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+p.topic-title {
+  font-weight: bold }
+
+pre.address {
+  margin-bottom: 0 ;
+  margin-top: 0 ;
+  font: inherit }
+
+pre.literal-block, pre.doctest-block, pre.math {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+span.classifier {
+  font-family: sans-serif ;
+  font-style: oblique }
+
+span.classifier-delimiter {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+span.interpreted {
+  font-family: sans-serif }
+
+span.option {
+  white-space: nowrap }
+
+span.pre {
+  white-space: pre }
+
+span.problematic {
+  color: red }
+
+span.section-subtitle {
+  /* font-size relative to parent (h1..h6 element) */
+  font-size: 80% }
+
+table.citation {
+  border-left: solid 1px gray;
+  margin-left: 1px }
+
+table.docinfo {
+  margin: 2em 4em }
+
+table.docutils {
+  margin-top: 0.5em ;
+  margin-bottom: 0.5em }
+
+table.footnote {
+  border-left: solid 1px black;
+  margin-left: 1px }
+
+table.docutils td, table.docutils th,
+table.docinfo td, table.docinfo th {
+  padding-left: 0.5em ;
+  padding-right: 0.5em ;
+  vertical-align: top }
+
+table.docutils th.field-name, table.docinfo th.docinfo-name {
+  font-weight: bold ;
+  text-align: left ;
+  white-space: nowrap ;
+  padding-left: 0 }
+
+h1 tt.docutils, h2 tt.docutils, h3 tt.docutils,
+h4 tt.docutils, h5 tt.docutils, h6 tt.docutils {
+  font-size: 100% }
+
+ul.auto-toc {
+  list-style-type: none }
+</style>
+       <style data-savepage-href="/static/css/pygments.css" type="text/css" media="screen">pre .hll { background-color: #ffffcc }
+pre  { background: #f0f0f0; }
+pre .c { color: #60a0b0; font-style: italic } /* Comment */
+pre .err { border: 1px solid #FF0000 } /* Error */
+pre .k { color: #007020; font-weight: bold } /* Keyword */
+pre .o { color: #666666 } /* Operator */
+pre .cm { color: #60a0b0; font-style: italic } /* Comment.Multiline */
+pre .cp { color: #007020 } /* Comment.Preproc */
+pre .c1 { color: #60a0b0; font-style: italic } /* Comment.Single */
+pre .cs { color: #60a0b0; background-color: #fff0f0 } /* Comment.Special */
+pre .gd { color: #A00000 } /* Generic.Deleted */
+pre .ge { font-style: italic } /* Generic.Emph */
+pre .gr { color: #FF0000 } /* Generic.Error */
+pre .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+pre .gi { color: #00A000 } /* Generic.Inserted */
+pre .go { color: #808080 } /* Generic.Output */
+pre .gp { color: #c65d09; font-weight: bold } /* Generic.Prompt */
+pre .gs { font-weight: bold } /* Generic.Strong */
+pre .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+pre .gt { color: #0040D0 } /* Generic.Traceback */
+pre .kc { color: #007020; font-weight: bold } /* Keyword.Constant */
+pre .kd { color: #007020; font-weight: bold } /* Keyword.Declaration */
+pre .kn { color: #007020; font-weight: bold } /* Keyword.Namespace */
+pre .kp { color: #007020 } /* Keyword.Pseudo */
+pre .kr { color: #007020; font-weight: bold } /* Keyword.Reserved */
+pre .kt { color: #902000 } /* Keyword.Type */
+pre .m { color: #40a070 } /* Literal.Number */
+pre .s { color: #4070a0 } /* Literal.String */
+pre .na { color: #4070a0 } /* Name.Attribute */
+pre .nb { color: #007020 } /* Name.Builtin */
+pre .nc { color: #0e84b5; font-weight: bold } /* Name.Class */
+pre .no { color: #60add5 } /* Name.Constant */
+pre .nd { color: #555555; font-weight: bold } /* Name.Decorator */
+pre .ni { color: #d55537; font-weight: bold } /* Name.Entity */
+pre .ne { color: #007020 } /* Name.Exception */
+pre .nf { color: #06287e } /* Name.Function */
+pre .nl { color: #002070; font-weight: bold } /* Name.Label */
+pre .nn { color: #0e84b5; font-weight: bold } /* Name.Namespace */
+pre .nt { color: #062873; font-weight: bold } /* Name.Tag */
+pre .nv { color: #bb60d5 } /* Name.Variable */
+pre .ow { color: #007020; font-weight: bold } /* Operator.Word */
+pre .w { color: #bbbbbb } /* Text.Whitespace */
+pre .mf { color: #40a070 } /* Literal.Number.Float */
+pre .mh { color: #40a070 } /* Literal.Number.Hex */
+pre .mi { color: #40a070 } /* Literal.Number.Integer */
+pre .mo { color: #40a070 } /* Literal.Number.Oct */
+pre .sb { color: #4070a0 } /* Literal.String.Backtick */
+pre .sc { color: #4070a0 } /* Literal.String.Char */
+pre .sd { color: #4070a0; font-style: italic } /* Literal.String.Doc */
+pre .s2 { color: #4070a0 } /* Literal.String.Double */
+pre .se { color: #4070a0; font-weight: bold } /* Literal.String.Escape */
+pre .sh { color: #4070a0 } /* Literal.String.Heredoc */
+pre .si { color: #70a0d0; font-style: italic } /* Literal.String.Interpol */
+pre .sx { color: #c65d09 } /* Literal.String.Other */
+pre .sr { color: #235388 } /* Literal.String.Regex */
+pre .s1 { color: #4070a0 } /* Literal.String.Single */
+pre .ss { color: #517918 } /* Literal.String.Symbol */
+pre .bp { color: #007020 } /* Name.Builtin.Pseudo */
+pre .vc { color: #bb60d5 } /* Name.Variable.Class */
+pre .vg { color: #bb60d5 } /* Name.Variable.Global */
+pre .vi { color: #bb60d5 } /* Name.Variable.Instance */
+pre .il { color: #40a070 } /* Literal.Number.Integer.Long */
+</style>
+
+       <!-- allow pypi to override the standard pydotorg/docutils/etc. styles -->
+       <style data-savepage-href="/static/css/pypi.css" type="text/css">/*
+Style information specific to the Cheese Shop web interface.
+
+$id$
+*/
+td.content {
+  padding: 2px;
+}
+p.ok {
+  background-color: #22bb22;
+  padding: 5 5 5 5;
+  color: white;
+  font-weight: bold;
+}
+p.error {
+  background-color: #bb2222;
+  padding: 5 5 5 5;
+  color: white;
+  font-weight: bold;
+}
+
+/* style for forms */
+table.form {
+  padding: 2;
+  border-spacing: 0px;
+  border-collapse: separate;
+}
+
+table.form th {
+  color: #333388;
+  text-align: right;
+  vertical-align: top;
+  font-weight: normal;
+  padding-right: 0.5em;
+}
+
+table.form th.header {
+  font-weight: bold;
+  text-align: left;
+}
+
+table.form th.required {
+  font-weight: bold;
+}
+
+table.form td {
+  color: #333333;
+  empty-cells: show;
+  vertical-align: top;
+}
+
+table.form td.optional {
+  font-weight: bold;
+  font-style: italic;
+}
+
+/* style for lists */
+table.list {
+  border-spacing: 0px;
+  border-collapse: separate;
+  width: 100%;
+}
+
+table.list th {
+  text-align: left;
+  padding: 2px 4px 2px 4px;
+  color: #333;
+  background-color: #ccc;
+  border-bottom: 1px solid #ccc;
+  vertical-align: top;
+  empty-cells: show;
+}
+table.list th a[href]:hover { color: #404070 }
+table.list th a[href]:link { color: #404070 }
+table.list th a[href] { color: #404070 }
+table.list th.group {
+  background-color: #f4f4ff;
+  text-align: center;
+}
+
+table.list td {
+  padding: 2px 4px 2px 4px;
+  border: 0px 2px 0px 2px;
+  border-right: 1px solid #ccc;
+  color: #333;
+  background-color: white;
+  vertical-align: top;
+  empty-cells: show;
+}
+
+table.list tr.normal td {
+  background-color: white;
+}
+
+table.list tr.odd td {
+  background-color: #efefef;
+}
+
+table.list td#last {
+  border-top: 1px solid #ccc;
+  border-left: none;
+  border-right: none;
+}
+
+table.list tr:first-child td,
+table.list tr:first-child th {
+    border-top: 1px solid #ccc;
+}
+table.list td:first-child {
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+}
+
+table.list tr.navigation th {
+  text-align: right;
+}
+table.list tr.navigation th:first-child {
+  border-right: none;
+  text-align: left;
+}
+
+/* style for role lists */
+table.roles {
+  border-spacing: 0px;
+  border-collapse: separate;
+  width: 100%;
+}
+
+table.roles th.header{
+  padding-top: 10px;
+  border-bottom: 1px solid gray;
+  font-weight: bold;
+  background-color: white;
+  color: #707040;
+}
+
+table.roles th {
+  border-bottom: 1px solid #afafaf;
+  font-weight: bold;
+  text-align: left;
+}
+
+table.roles td {
+  vertical-align: top;
+  empty-cells: show;
+}
+
+
+/* style for history displays */
+table.history {
+  border-spacing: 0px;
+  border-collapse: separate;
+}
+
+table.history th.header{
+  padding-top: 10px;
+  border-bottom: 1px solid gray;
+  font-weight: bold;
+  background-color: white;
+  color: #707040;
+  font-size: 100%;
+}
+
+table.history th {
+  border-bottom: 1px solid #afafaf;
+  font-weight: bold;
+  text-align: left;
+  font-size: 90%;
+  padding-right: 1em;
+}
+
+table.history td {
+  font-size: 90%;
+  vertical-align: top;
+  empty-cells: show;
+  padding-right: 1em;
+}
+
+table.history tr.last td {
+  border-bottom: 1px solid gray;
+}
+
+ul.nodot {
+    list-style-type: none;
+}
+
+
+
+.floating-box {
+float: right;
+}
+
+.homepage-box h4, #document-project-url h4, .externallinks h4
+{
+font-family: Verdana, Geneva, "Bitstream Vera Sans", Helvetica, sans-serif;
+font-size: 88%;
+font-weight: bold;
+padding: 3px 0 4px 12px;
+margin-bottom:8px;
+border-bottom:3px solid #d5ad42;
+background-color: #F4F4F4;
+text-align: left;
+z-index: 0;
+-moz-border-radius-topleft: 16px;
+}
+
+#document-project-url h4, .homepage-box h4, .externallinks h4 {
+-moz-border-radius-topleft:11px;
+background-color:#376A94;
+color:#FFFFFF;
+font-family:Arial,Verdana,Geneva,"Bitstream Vera Sans",Helvetica,sans-serif;
+font-size:94%;
+font-weight:bold;
+margin:0;
+padding:3px 0 4px 12px;
+text-align:left;
+z-index:0;
+}
+
+#document-project-url
+{
+font-family: Verdana, Geneva, "Bitstream Vera Sans", Helvetica, sans-serif;
+font-size:  98%;
+text-align: left;
+color: #3C4B6B;
+background-color: #F7F6F0;
+width: 15em;
+border: 1px solid #B7BECC;
+z-index: 999;
+float:right;
+margin: 0 12px 12px 12px;
+padding-bottom: 10px;
+list-style:none;
+-moz-border-radius-topleft: 12px;
+-moz-border-radius-bottomright: 12px;
+}
+
+#document-project-url ul
+{
+list-style: none;
+display: block;
+border:0;
+padding: 0;
+margin: 0 3em 0 1.1em;
+color: #3C4B6B;
+background: none;
+width: auto;
+font-size: 103%;
+font-family: Verdana, Geneva, "Bitstream Vera Sans", Helvetica, sans-serif;
+}
+
+#document-project-url a:link, #document-project-url a:visited
+{
+color:#3C4B6B;
+text-decoration:  none;
+}
+
+#document-project-url a:hover
+{
+color: #000000;
+text-decoration: underline;
+}
+
+#document-project-url h4 a:link, #document-project-url  h4 a:visited
+{
+color: #FFFFFF;
+}
+
+
+#document-project-url h4 a:hover
+{
+color: #FFFFFF;
+
+}
+#document-project-url form {
+margin:12px;
+}
+#document-project-url input {
+margin-top:3px;
+}
+
+#document-navigation ul {
+  /* bit too squeezy with the default large padding */
+  margin: 0px;
+}
+
+#document-navigation a {
+  border-bottom: none;
+}
+
+#document-navigation a:link {
+  text-decoration: underline;
+}
+
+#document-navigation a:visited {
+  text-decoration: underline;
+}
+
+.delete-project {
+    margin: 3em 1em;
+    border: thin solid red;
+    background: #ffeeee;
+    padding: 1em;
+}
+</style>
+       <style data-savepage-href="/static/css/pypi-screen.css" type="text/css" media="screen">/* PyPI styles that are specifically designed to override base / inherited
+ * screen styles */
+
+#download-button a.button {
+	display: inline-block;
+	zoom: 1; /* zoom and *display = ie7 hack for display:inline-block */
+	*display: inline;
+	vertical-align: baseline;
+	margin: 0 2px;
+	outline: none;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none;
+	font: 14px/100% Arial, Helvetica, sans-serif;
+	padding: .5em 2em .55em;
+	text-shadow: 0 1px 1px rgba(0,0,0,.3);
+	-webkit-border-radius: .5em;
+	-moz-border-radius: .5em;
+	border-radius: .5em;
+	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+	-moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+	box-shadow: 0 1px 2px rgba(0,0,0,.2);
+}
+#download-button a.button:hover {
+	text-decoration: none;
+}
+#download-button a.button:active {
+	position: relative;
+	top: 1px;
+}
+
+#download-button a.green {
+	color: #e8f0de;
+	border: solid 1px #538312;
+	background: #64991e;
+	background: -webkit-gradient(linear, left top, left bottom, from(#7db72f), to(#4e7d0e));
+	background: -moz-linear-gradient(top,  #7db72f,  #4e7d0e);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#7db72f', endColorstr='#4e7d0e');
+}
+#download-button a.green:hover {
+	background: #538018;
+	background: -webkit-gradient(linear, left top, left bottom, from(#6b9d28), to(#436b0c));
+	background: -moz-linear-gradient(top,  #6b9d28,  #436b0c);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#6b9d28', endColorstr='#436b0c');
+}
+#download-button a.green:active {
+	color: #a9c08c;
+	background: -webkit-gradient(linear, left top, left bottom, from(#4e7d0e), to(#7db72f));
+	background: -moz-linear-gradient(top,  #4e7d0e,  #7db72f);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#4e7d0e', endColorstr='#7db72f');
+}
+
+
+pre {
+    margin: 0 2em 0 2em;
+    padding: 10px;
+/*    border: thin solid #AAF;
+    border-radius: .5em;*/
+}
+</style>
+
+       
+       <meta name="google-site-verification" content="NSgF04qslVV4P7nymxJDSkWVK09zfdPTxgZfU3dNSoQ">
+       
+
+       
+ <meta name="keywords" content="daemon">
+ <meta name="description" content="Library to implement a well-behaved Unix daemon process.">
+ <link rel="meta" title="DOAP" type="application/rdf+xml" href="/pypi?:action=doap&name=python-daemon&version=2.1.2">
+ <style type="text/css">
+  table.form th {white-space: pre;}
+ </style>
+
+
+       <style type="text/css">
+       </style>
+    <link rel="stylesheet" type="text/css" href="chrome-extension://immhpnclomdloikkpcefncmfgjbkojmh/css/emoji.css">
+<link rel="icon" href="">
+
+<script id="savepage-pageloader" type="application/javascript">
+savepage_PageLoader(5);
+"use strict";function savepage_PageLoader(maxframedepth){var resourceMimeType=new Array();var resourceBase64Data=new Array();var resourceBlobUrl=new Array();window.addEventListener("DOMContentLoaded",function(a){createBlobURLs();replaceReferences(0,document.documentElement)},false);function createBlobURLs(){var i,j,binaryString,blobData;var a=new Array();for(i=0;i<resourceMimeType.length;i++){if(typeof resourceMimeType[i]!="undefined"){binaryString=atob(resourceBase64Data[i]);resourceBase64Data[i]="";a.length=0;for(j=0;j<binaryString.length;j++){a[j]=binaryString.charCodeAt(j)}blobData=new Blob([new Uint8Array(a)],{type:resourceMimeType[i]});resourceMimeType[i]="";resourceBlobUrl[i]=window.URL.createObjectURL(blobData)}}}function replaceReferences(a,b){var i,regex1,regex2,csstext,blobData;regex1=/url\(\s*(?:'|")?data:[^;]*;resource=(\d+);base64,(?:'|")?\s*\)/gi;regex2=/data:[^;]*;resource=(\d+);base64,/i;if(b.hasAttribute("style")){csstext=b.style.cssText;b.style.cssText=csstext.replace(regex1,replaceCSSRef)}if(b.localName=="style"){csstext=b.textContent;b.textContent=csstext.replace(regex1,replaceCSSRef)}else if(b.localName=="link"&&(b.rel.toLowerCase()=="icon"||b.rel.toLowerCase()=="shortcut icon")){if(b.href!="")b.href=b.href.replace(regex2,replaceRef)}else if(b.localName=="body"){if(b.background!="")b.background=b.background.replace(regex2,replaceRef)}else if(b.localName=="img"){if(b.src!="")b.src=b.src.replace(regex2,replaceRef)}else if(b.localName=="input"&&b.type.toLowerCase()=="image"){if(b.src!="")b.src=b.src.replace(regex2,replaceRef)}else if(b.localName=="audio"){if(b.src!=""){b.src=b.src.replace(regex2,replaceRef);b.load()}}else if(b.localName=="video"){if(b.src!=""){b.src=b.src.replace(regex2,replaceRef);b.load()}if(b.poster!="")b.poster=b.poster.replace(regex2,replaceRef)}else if(b.localName=="source"){if(b.src!=""){b.src=b.src.replace(regex2,replaceRef);b.parentElement.load()}}else if(b.localName=="track"){if(b.src!="")b.src=b.src.replace(regex2,replaceRef)}else if(b.localName=="object"){if(b.data!="")b.data=b.data.replace(regex2,replaceRef)}else if(b.localName=="embed"){if(b.src!="")b.src=b.src.replace(regex2,replaceRef)}if(b.localName=="iframe"||b.localName=="frame"){if(a<maxframedepth){if(b.hasAttribute("data-savepage-sameorigin")){blobData=new Blob([decodeURIComponent(b.src.substr(29))],{type:"text/html;charset=utf-8"});b.onload=function(){try{if(b.contentDocument.documentElement!=null){replaceReferences(a+1,b.contentDocument.documentElement)}}catch(e){}};b.src=window.URL.createObjectURL(blobData)}}}else{for(i=0;i<b.children.length;i++)if(b.children[i]!=null)replaceReferences(a,b.children[i])}}function replaceCSSRef(a,b,c,d){return"url("+resourceBlobUrl[+b]+")"}function replaceRef(a,b,c,d){return resourceBlobUrl[+b]}
+resourceMimeType[10] = "image/png"; resourceBase64Data[10] = "iVBORw0KGgoAAAANSUhEUgAAAAYAAABSCAIAAAD4sTL+AAAAA3NCSVQICAjb4U/gAAAACXBIWXMAAAsSAAALEgHS3X78AAAAIHRFWHRTb2Z0d2FyZQBNYWNyb21lZGlhIEZpcmV3b3JrcyBNWLuRKiQAAAAWdEVYdENyZWF0aW9uIFRpbWUAMTIvMDUvMDR1W8L8AAAATElEQVR4nGN8+fIlAypgYsAAWIRYGDGFGBjRBYkzi1gbaWw8phCtPURTG7EYj03V0LGROOPJtpHGxg8hDw1WG6lpPP1tHAAPkVtiAgC3dwPAjN8N6wAAAABJRU5ErkJggg==";
+resourceMimeType[11] = "image/png"; resourceBase64Data[11] = "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";
+resourceMimeType[12] = "image/gif"; resourceBase64Data[12] = "R0lGODlhAQABAIAAAP///////yH5BAUUAAEALAAAAAABAAEAAAICTAEAOw==";
+resourceMimeType[13] = "image/png"; resourceBase64Data[13] = "iVBORw0KGgoAAAANSUhEUgAAAIwAAAARCAIAAACAWtP0AAAAA3NCSVQICAjb4U/gAAAACXBIWXMAAAsSAAALEgHS3X78AAAAIHRFWHRTb2Z0d2FyZQBNYWNyb21lZGlhIEZpcmV3b3JrcyBNWLuRKiQAAAAWdEVYdENyZWF0aW9uIFRpbWUAMTIvMDYvMDRn7m0SAAAAW0lEQVR4nO3V0QkAQQgD0bhs/4XahNeBv3sD8yoIhGjNTPRvN0l3v46hzU1SVa9jaHOTnHNex9DGJQFYEoAlAfiTAFwSgCUBeO4AXBKAJQF47gBcEoAlAVgSwAdacQY2hOtlkAAAAABJRU5ErkJggg==";
+resourceMimeType[14] = "image/png"; resourceBase64Data[14] = "iVBORw0KGgoAAAANSUhEUgAAAPoAAAARCAYAAAD0b7F8AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAK8AAACvABQqw0mAAAACB0RVh0U29mdHdhcmUATWFjcm9tZWRpYSBGaXJld29ya3MgTVi7kSokAAAAFnRFWHRDcmVhdGlvbiBUaW1lADEyLzA2LzA0Z+5tEgAAALtJREFUeJzt2TsOQFAQheEZsVSCsByCsEKN0CivSiKSKUXG/b/udNOczH1oCCEIgF9Ll2X5egYAL0tV9esZALwsTZLk6xkAvIyNDkSAogMOzfMsWZaZ+UnXdeXVHXBomibJ89zMd7ptG0UHnBrHUYqiMPNF932n6IBjwzBIWZZmFuGODrjW971UVWXmC99rgFNd10ld12a+Y6MDDrVtK03TmPlJj+Pgjg78HEd3IAIc3YEIUHQgAhQdiMAJsnlAcYTBdPsAAAAASUVORK5CYII=";
+resourceMimeType[15] = "image/png"; resourceBase64Data[15] = "iVBORw0KGgoAAAANSUhEUgAAAPoAAAARCAYAAAD0b7F8AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAK8AAACvABQqw0mAAAACB0RVh0U29mdHdhcmUATWFjcm9tZWRpYSBGaXJld29ya3MgTVi7kSokAAAAFnRFWHRDcmVhdGlvbiBUaW1lADEyLzA2LzA0Z+5tEgAAAIpJREFUeJzt2jEOwyAQRcF15NtyHo4KLalSBCmRXVjWmpnud9s80bCNMUYAj7b33u++AbjY6+4DgOsJHRYgdFiA0CGhWuvfPRM6JFRK+Yp73jOhQ1JnYhc6JHY0dqFDYrXWKKX83B9Ch6SORh4hdEjpTOQREVtrzV93eDgvOixA6LAAocMChA4LeANRljJd8nyitAAAAABJRU5ErkJggg==";
+resourceMimeType[16] = "image/gif"; resourceBase64Data[16] = "R0lGODlhCQAJAIAAAP///wsnSiH5BAUUAAAALAAAAAAJAAkAAAINhI+ZYbytnINgVqqyKgA7";
+resourceMimeType[17] = "image/png"; resourceBase64Data[17] = "iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEwAACxMBAJqcGAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAEgSURBVDiNpZO7SgNBGIW/2awDaTRJs7FaEdfCylcQsbT2AcTSN/ABtvAJAj6AlfYWIjaCjYWwBC0kWISQgBd0sxfntwi6Jibrmpxy5sx3Dv/MKBERZpA1upAkCXEcTwcIggDf92m1WtMBoijCGFP48C/AqKR/j3m9AkkwT2fI+y0wPDI7D5A+HGC6xyhdR+L2IHFhg7m1UyjN/93gO2WlgV6/plTfwzyfkz4eFmvwJau2PTAvLfPRPkJeLrK9IoAsroayq0jSzQdMelvydoOkPVTZy5g/DVprADqdDp6XmdK7XVAa0zsBoLS4Px7gui6O4xCG4XBy2ETCJqq8iu01sCqbQ3UnKg52pH+Za5H/DXGMcq/Rqm6h7EouQM36nT8B8aKcEoKd93oAAAAASUVORK5CYII=";
+resourceMimeType[19] = "image/svg+xml"; resourceBase64Data[19] = "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iNjAiIGhlaWdodD0iMjAiPjxsaW5lYXJHcmFkaWVudCBpZD0iYiIgeDI9IjAiIHkyPSIxMDAlIj48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNiYmIiIHN0b3Atb3BhY2l0eT0iLjEiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3Atb3BhY2l0eT0iLjEiLz48L2xpbmVhckdyYWRpZW50PjxjbGlwUGF0aCBpZD0iYSI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjIwIiByeD0iMyIgZmlsbD0iI2ZmZiIvPjwvY2xpcFBhdGg+PGcgY2xpcC1wYXRoPSJ1cmwoI2EpIj48cGF0aCBmaWxsPSIjNTU1IiBkPSJNMCAwaDMzdjIwSDB6Ii8+PHBhdGggZmlsbD0iIzk3Q0EwMCIgZD0iTTMzIDBoMjd2MjBIMzN6Ii8+PHBhdGggZmlsbD0idXJsKCNiKSIgZD0iTTAgMGg2MHYyMEgweiIvPjwvZz48ZyBmaWxsPSIjZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iRGVqYVZ1IFNhbnMsVmVyZGFuYSxHZW5ldmEsc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMTAiPjx0ZXh0IHg9IjE3NSIgeT0iMTUwIiBmaWxsPSIjMDEwMTAxIiBmaWxsLW9wYWNpdHk9Ii4zIiB0cmFuc2Zvcm09InNjYWxlKC4xKSIgdGV4dExlbmd0aD0iMjMwIj5pcHY2PC90ZXh0Pjx0ZXh0IHg9IjE3NSIgeT0iMTQwIiB0cmFuc2Zvcm09InNjYWxlKC4xKSIgdGV4dExlbmd0aD0iMjMwIj5pcHY2PC90ZXh0Pjx0ZXh0IHg9IjQ1NSIgeT0iMTUwIiBmaWxsPSIjMDEwMTAxIiBmaWxsLW9wYWNpdHk9Ii4zIiB0cmFuc2Zvcm09InNjYWxlKC4xKSIgdGV4dExlbmd0aD0iMTcwIj5nbyE8L3RleHQ+PHRleHQgeD0iNDU1IiB5PSIxNDAiIHRyYW5zZm9ybT0ic2NhbGUoLjEpIiB0ZXh0TGVuZ3RoPSIxNzAiPmdvITwvdGV4dD48L2c+IDwvc3ZnPg==";
+resourceMimeType[20] = "image/svg+xml"; resourceBase64Data[20] = "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iNjYiIGhlaWdodD0iMjAiPjxsaW5lYXJHcmFkaWVudCBpZD0iYiIgeDI9IjAiIHkyPSIxMDAlIj48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNiYmIiIHN0b3Atb3BhY2l0eT0iLjEiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3Atb3BhY2l0eT0iLjEiLz48L2xpbmVhckdyYWRpZW50PjxjbGlwUGF0aCBpZD0iYSI+PHJlY3Qgd2lkdGg9IjY2IiBoZWlnaHQ9IjIwIiByeD0iMyIgZmlsbD0iI2ZmZiIvPjwvY2xpcFBhdGg+PGcgY2xpcC1wYXRoPSJ1cmwoI2EpIj48cGF0aCBmaWxsPSIjNTU1IiBkPSJNMCAwaDM5djIwSDB6Ii8+PHBhdGggZmlsbD0iIzk3Q0EwMCIgZD0iTTM5IDBoMjd2MjBIMzl6Ii8+PHBhdGggZmlsbD0idXJsKCNiKSIgZD0iTTAgMGg2NnYyMEgweiIvPjwvZz48ZyBmaWxsPSIjZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iRGVqYVZ1IFNhbnMsVmVyZGFuYSxHZW5ldmEsc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMTAiPjx0ZXh0IHg9IjIwNSIgeT0iMTUwIiBmaWxsPSIjMDEwMTAxIiBmaWxsLW9wYWNpdHk9Ii4zIiB0cmFuc2Zvcm09InNjYWxlKC4xKSIgdGV4dExlbmd0aD0iMjkwIj5odHRwMjwvdGV4dD48dGV4dCB4PSIyMDUiIHk9IjE0MCIgdHJhbnNmb3JtPSJzY2FsZSguMSkiIHRleHRMZW5ndGg9IjI5MCI+aHR0cDI8L3RleHQ+PHRleHQgeD0iNTE1IiB5PSIxNTAiIGZpbGw9IiMwMTAxMDEiIGZpbGwtb3BhY2l0eT0iLjMiIHRyYW5zZm9ybT0ic2NhbGUoLjEpIiB0ZXh0TGVuZ3RoPSIxNzAiPmdvITwvdGV4dD48dGV4dCB4PSI1MTUiIHk9IjE0MCIgdHJhbnNmb3JtPSJzY2FsZSguMSkiIHRleHRMZW5ndGg9IjE3MCI+Z28hPC90ZXh0PjwvZz4gPC9zdmc+";
+resourceMimeType[21] = "image/gif"; resourceBase64Data[21] = "R0lGODlhNwAWAPMPAP///+fn597e3tbW1r29vYSEhEJCQjk5OTExMSkpKRgYGBAQEAgICP/eAABjpQAAACH/C05FVFNDQVBFMi4wAwEDAAAh/h1HaWZCdWlsZGVyIDAuNSBieSBZdmVzIFBpZ3VldAAh+QQFMgANACwAAAAANwAWAAAE/rDJSSt1OOuNrf/gxI0kF57Nc6zHoz7Oy65v3Kp0/aKVcwBAQOHX+hWCwGMRcDgmiSomzIHKGJtCKRE7hBqFXGG0pQFprsf0QzmODtPaLFi6sXB+wcI6q2/j83FwbCMid2A3e31+YHBLSk5khA0jUC4wlT5xjoxZLYOEJFBndJlLpk5zpi6RJRkvUxivsYi0qzm1ba02LDA4N2SvvDK0Ob6kJX9iqEOay1/KeXudsB0bRgWCYSx82HLdad9CkNQS1kjMm4JIfLbrbJ8d5VaHbmHq2F1Sq+L5b8d2pSxJg6YG1QpSAz0hIWNG1qxiRSwJu+FKmK8bKCxpENhLYAyOFy42egTJQ56uk61KhkDJUqVLky1fNogAACH5BAUKAA0ALAAAAAA3ABYAAAT3sMlJK3U4642t/+DEjSQXns2jrqvDvqoLs/KDVi6hE8pDrLydTvFT/YhDHzDmQGV8PSJx+ZAagVYp7/rQgDTQajBaVBrJ03OyuLFwfLtoQTGnwuPl8ZxtkozCLFZ2W1pYRzpMfX9lMWZdjnlZQSppJA0kZmB8kEtIW3kvJRs0Ty01M6gzfCUwpzSpsDCrmEJka51xUEmetpVeozwKdJJpusJawXvHY0iJTZeauZFjQbVbQNaUsyJP12diWuHCXFjjYb7PFzkvvFVzdZ5cGGKI9PXpbqSusaHz/Cim/LUIhQrMqxc3/IhayBBfQjcNGz6cqDCiw4QRAAAh+QQFCgANACwAAAAANwAWAAAE/rDJSSt1OOuNrf/gxI0kF57Nc6zHoz7Oy65v3Kp0/aKVcwBAQOHX+hWCwGMRcDgmiSomzIHKGJtCKRE7hBqFXGG0pQFprsf0QzmODtPaLFi6sXB+wcI6q2/j83FwbCMid2A3e31+YHBLSk5khA0jUC4wlT5xjoxZLYOEJFBndJlLpk5zpi6RJRkvUxivsYi0qzm1ba02LDA4N2SvvDK0Ob6kJX9iqEOay1/KeXudsB0bRgWCYSx82HLdad9CkNQS1kjMm4JIfLbrbJ8d5VaHbmHq2F1Sq+L5b8d2pSxJg6YG1QpSAz0hIWNG1qxiRSwJu+FKmK8bKCxpENhLYAyOFy42egTJQ56uk61KhkDJUqVLky1fNogAADs=";
+}
+</script>
+<meta name="savepage-url" content="https://pypi.python.org/pypi/python-daemon/#downloads">
+<meta name="savepage-title" content="python-daemon 2.1.2 : Python Package Index">
+<meta name="savepage-date" content="Thu Mar 29 2018 21:18:26 GMT+0800 (中国标准时间)">
+<meta name="savepage-state" content="Standard Items; Used page loader; Retained cross-origin frames; Removed unsaved URLs; Max frame depth = 5; Max resource size = 50MB; Max resource time = 10s;">
+<meta name="savepage-version" content="9.3">
+<meta name="savepage-comments" content="">
+</head>
+    <body style="">
+     
+
+      <!--  Logo  -->
+      <h1 id="logoheader">
+       <a accesskey="1" href="http://www.python.org" id="logolink">
+          <img data-savepage-src="/static/images/python-logo.png" src="data:image/png;resource=11;base64," alt="homepage" border="0" id="logo">
+       </a>
+       <div style="text-align: center; position: relative; top: -5.3em; font-size: .5em; z-index: 666; color: darkviolet;">
+       Check out <a style="color: darkviolet;" href="https://pypi.org">the all new PyPI!</a> (More information <a style="color: darkviolet;" href="http://pyfound.blogspot.com/2018/03/warehouse-all-new-pypi-is-now-in-beta.html">here</a>)
+       </div>
+      </h1>
+      <!--  Skip to Navigation  -->
+      <div class="skiptonav"><a accesskey="2" href="#left-hand-navigation"><img data-savepage-src="/static/images/trans.gif" src="data:image/gif;resource=12;base64," alt="skip to navigation" border="0" id="skiptonav"></a></div>
+      <div class="skiptonav"><a accesskey="3" href="#content-body"><img data-savepage-src="/static/images/trans.gif" src="data:image/gif;resource=12;base64," alt="skip to content" border="0" id="skiptocontent"></a></div>
+      <!--  Utility Menu  -->
+
+      <div id="utility-menu">
+        <!--  Search Box  -->
+        <div id="searchbox">
+          <form id="searchform" method="get" name="searchform" action="/pypi">
+            <input type="hidden" name=":action" value="search">
+            <div id="search">
+              <input class="input-text" id="term" name="term" autofocus="autofocus">
+              <input class="input-button" type="submit" name="submit" value="search" id="submit">
+            </div>
+          </form>
+        </div>
+<!-- XXX: reinstate this       <div id="screen-switcher"></div> -->
+      </div>
+      <div id="left-hand-navigation">
+
+        <!--  Main Menu NEED LEVEL TWO HEADER AND FOOTER -->
+        <div id="menu">
+          <ul class="level-one">
+            <li class="selected">
+              <a class="selected" href="/pypi">Package Index</a>
+
+              <ul class="level-two">
+
+                
+                  <li class=""><a class="" href="/pypi?%3Aaction=browse">Browse packages</a></li>
+                
+                
+                  <li class=""><a class="" href="/pypi?%3Aaction=list_classifiers">List trove classifiers</a></li>
+                
+                
+                  <li class=""><a class="" href="/pypi?%3Aaction=rss">RSS (latest 40 updates)</a></li>
+                
+                
+                  <li class=""><a class="" href="/pypi?%3Aaction=packages_rss">RSS (newest 40 packages)</a></li>
+                
+        <li><a href="/tos">Terms of Service</a></li>
+        <li><a href="http://wiki.python.org/moin/CheeseShopTutorial">PyPI Tutorial</a></li>
+        <li><a href="/security">PyPI Security</a></li>
+        <li><a href="http://sourceforge.net/tracker/?group_id=66150&atid=513504">PyPI Support</a></li>
+        <li><a href="https://github.com/pypa/pypi-legacy/issues">PyPI Bug Reports</a></li>
+        <li><a href="http://www.python.org/sigs/distutils-sig/">PyPI Discussion</a></li>
+        <li><a href="http://wiki.python.org/moin/CheeseShopDev">PyPI Developer Info</a></li>
+       </ul>
+
+            </li>
+
+
+
+
+            <li class=""><a href="http://www.python.org/about" class="" title="About The Python Language">About</a>
+            </li><li class=""><a href="http://www.python.org/news" class="" title="">News</a>
+            </li><li class=""><a href="http://www.python.org/doc" class="" title="">Documentation</a>
+            </li><li class=""><a href="http://www.python.org/download" title="">Download</a>
+
+
+            </li><li class=""><a href="http://www.python.org/community" class="" title="">Community</a>
+            </li><li class=""><a href="http://www.python.org/psf" class="" title="Python Software Foundation">Foundation</a>
+            </li><li class=""><a href="http://www.python.org/dev" class="" title="Python Core Language Development">Core Development</a>
+          </li>
+          </ul>
+        </div>
+
+      </div>
+      <div id="content-body">
+        <div id="body-main">
+          <div id="content">
+
+            <div id="breadcrumb">
+              <a href="/pypi">Package Index</a>
+              
+                <span class="breadcrumb-separator">&gt;</span>
+                <a href="/pypi/python-daemon">python-daemon</a>
+              
+              
+                <span class="breadcrumb-separator">&gt;</span>
+                <a href="/pypi/python-daemon/2.1.2">2.1.2</a>
+              
+
+            </div>
+
+            <div id="document-floating">
+
+            <div id="document-navigation" style="overflow-y: auto; max-height: 15em; overflow-x: hidden;">
+		
+                  <h4>Not Logged In</h4>
+
+                  <ul>
+		    
+                    <li><a href="/pypi?%3Aaction=login_form">Log in</a></li>
+                    <li><a href="/pypi?%3Aaction=register_form">Register</a></li>
+                    <li><a href="/pypi?%3Aaction=forgotten_password_form">Lost Login?</a></li>
+		    <li><a href="/openid_login">Log in with OpenID</a>
+                      
+                        <a style="border: none;" href="/openid_login?provider=Launchpad"><img width="16" height="16" alt="Launchpad" data-savepage-src="https://launchpad.net/@@/launchpad.png" src="data:image/png;resource=17;base64," title="Launchpad"></a>
+                      
+                    </li>
+                    <li><a href="/google_login">Log in with Google<img width="16" height="16" data-savepage-src="https://www.google.com/favicon.ico" src="" title="Google Login" alt="Google Login"></a></li>
+                  </ul>
+
+		
+
+		
+
+                <div id="statusdiv">
+                </div>
+            </div>
+        </div>
+        
+
+
+            <div class="section">
+              <h1>python-daemon 2.1.2</h1>
+
+              
+<div id="download-button">
+ 
+ <a class="button green" style="float:right;" href="#downloads">Downloads ↓</a>
+</div>
+
+<p style="font-style: italic">Library to implement a well-behaved Unix daemon process.</p>
+
+
+
+
+
+
+
+
+<p>This library implements the well-behaved daemon specification of
+<a href="http://www.python.org/dev/peps/pep-3143" rel="nofollow">PEP 3143</a>, “Standard daemon process library”.</p>
+<p>A well-behaved Unix daemon process is tricky to get right, but the
+required steps are much the same for every daemon program. A
+<cite>DaemonContext</cite> instance holds the behaviour and configured
+process environment for the program; use the instance as a context
+manager to enter a daemon state.</p>
+<p>Simple example of usage:</p>
+<pre>import daemon
+
+from spam import do_main_program
+
+with daemon.DaemonContext():
+    do_main_program()
+</pre>
+<p>Customisation of the steps to become a daemon is available by
+setting options on the <cite>DaemonContext</cite> instance; see the
+documentation for that class for each option.</p>
+
+
+<a name="downloads"> </a>
+<table class="list" style="margin-bottom: 10px;">
+<tbody><tr>
+  <th>File</th>
+  <th>Type</th>
+  <th>Py Version</th>
+  <th>Uploaded on</th>
+  <th style="text-align: right;">Size</th>
+</tr>
+
+<tr class="odd">
+
+    <td>
+    <span style="white-space: nowrap;">
+      <a href="https://pypi.python.org/packages/b2/fb/a280d65f81e9d69989c8d6c4e0bb18d7280cdcd6d406a2cc3f4eb47d4402/python-daemon-2.1.2.tar.gz#md5=9c57343d81f2a96c51cffeab982b04d2">python-daemon-2.1.2.tar.gz</a>
+      (<a title="MD5 Digest" href="/pypi?:action=show_md5&digest=9c57343d81f2a96c51cffeab982b04d2">md5</a>,
+       <a title="PGP Signature" href="https://pypi.python.org/packages/b2/fb/a280d65f81e9d69989c8d6c4e0bb18d7280cdcd6d406a2cc3f4eb47d4402/python-daemon-2.1.2.tar.gz.asc">pgp</a>)
+    </span>
+    
+        </td>
+  <td style="white-space: nowrap;">
+    Source
+  </td>
+  <td>
+    
+  </td>
+  <td>2016-10-26</td>
+  <td style="text-align: right;">74KB</td>
+
+</tr>
+<tr class="even">
+
+    <td>
+    <span style="white-space: nowrap;">
+      <a href="https://pypi.python.org/packages/f4/59/816004688f8e8602526553cd96226f34657ce4a86daa2240c3eebb0568a3/python_daemon-2.1.2-py2.py3-none-any.whl#md5=d7d38fa204e3e2a82a3afa0b8e4cc621">python_daemon-2.1.2-py2.py3-none-any.whl</a>
+      (<a title="MD5 Digest" href="/pypi?:action=show_md5&digest=d7d38fa204e3e2a82a3afa0b8e4cc621">md5</a>,
+       <a title="PGP Signature" href="https://pypi.python.org/packages/f4/59/816004688f8e8602526553cd96226f34657ce4a86daa2240c3eebb0568a3/python_daemon-2.1.2-py2.py3-none-any.whl.asc">pgp</a>)
+    </span>
+    
+        </td>
+  <td style="white-space: nowrap;">
+    Python Wheel
+  </td>
+  <td>
+    3.5
+  </td>
+  <td>2016-10-26</td>
+  <td style="text-align: right;">18KB</td>
+
+</tr>
+
+<tr><td id="last" colspan="6"></td></tr>
+  </tbody></table>
+
+
+
+<ul class="nodot">
+ <li>
+  <strong>Author:</strong>
+  <span>Ben Finney</span>
+ </li>
+
+ 
+
+ 
+
+<!-- The <th> elements below are a terrible terrible hack for setuptools -->
+ <li>
+  <strong>Home Page:</strong>
+  <!-- <th>Home Page -->
+  <a href="https://pagure.io/python-daemon/">https://pagure.io/python-daemon/</a>
+ </li>
+
+
+ 
+
+ 
+
+
+ <li>
+  <strong>Keywords:</strong>
+  <span>daemon</span>
+ </li>
+
+ <li>
+  <strong>License:</strong>
+  
+  
+  <span>Apache-2</span>
+  
+ </li>
+
+ 
+
+<!-- TODO: add link to products in follow dependencies... -->
+ 
+ 
+ 
+
+ <li>
+  <strong>Categories</strong>
+  <ul class="nodot">
+   <li>
+    <a href="/pypi?:action=browse&c=5">Development Status :: 5 - Production/Stable</a>
+   </li>
+   <li>
+    <a href="/pypi?:action=browse&c=30">Intended Audience :: Developers</a>
+   </li>
+   <li>
+    <a href="/pypi?:action=browse&c=56">License :: OSI Approved :: Apache Software License</a>
+   </li>
+   <li>
+    <a href="/pypi?:action=browse&c=160">Operating System :: POSIX</a>
+   </li>
+   <li>
+    <a href="/pypi?:action=browse&c=532">Programming Language :: Python :: 2.7</a>
+   </li>
+   <li>
+    <a href="/pypi?:action=browse&c=533">Programming Language :: Python :: 3</a>
+   </li>
+   <li>
+    <a href="/pypi?:action=browse&c=423">Topic :: Software Development :: Libraries :: Python Modules</a>
+   </li>
+  </ul>
+ </li>
+
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+ <li>
+  <strong>Package Index Owner:</strong>
+  <span>bignose</span>
+ </li>
+
+ 
+
+ <li>
+  <strong><a href="https://github.com/edumbill/doap/wiki">DOAP</a> record:</strong>
+  <a href="/pypi?:action=doap&name=python-daemon&version=2.1.2">python-daemon-2.1.2.xml</a>
+ </li>
+
+</ul>
+
+
+
+
+
+            </div>
+
+
+          </div>
+          <div id="footer">
+            <div id="credits">
+              <div style="float: left; margin-right: 1em;" id="badges">
+                
+                <img data-savepage-src="https://img.shields.io/badge/ipv6-go!-green.svg" src="data:image/svg+xml;resource=19;base64," alt="ipv6 ready" title="ipv6 ready" border="0"><br>
+                <img data-savepage-src="https://img.shields.io/badge/http2-go!-green.svg" src="data:image/svg+xml;resource=20;base64," alt="http2 ready" title="http2 ready" border="0"><br>
+                
+                <img data-savepage-src="/static/images/PythonPoweredAnimSmall.gif" src="data:image/gif;resource=21;base64," alt="darn right it is" title="Python Powered" border="0">
+              </div>
+              <div style="float: right" id="donations">
+                <a href="http://www.python.org/about/website">Website maintained by the Python community</a><br>
+                <a href="https://www.fastly.com/" title="Real-time CDN services provided by Fastly">Real-time CDN by Fastly</a> /
+                <a href="http://developer.rackspace.com/" title="Server hosting by Rackspace Open Source support">Hosting by Rackspace</a><br>
+                <a href="https://aws.amazon.com/s3/" title="Object storage provided by Amazon S3">Object storage by Amazon S3</a> /
+                <a href="http://www.timparkin.co.uk/" title="Design by Tim Parkin, Yorkshire man, photographer and developer">Design by Tim Parkin</a>
+              </div>
+            </div>
+            Copyright © 1990-2018, <a href="http://www.python.org/psf">Python Software Foundation</a><br>
+            <a href="https://pypi.org/policy/terms-of-use/">Terms of Use</a>
+          </div>
+        </div>
+      </div>
+
+      
+      <script type="text/javascript" async="" data-savepage-src="https://www.google-analytics.com/plugins/ua/linkid.js" src=""></script><script async="" data-savepage-src="//www.google-analytics.com/analytics.js" src=""></script><script></script>
+      
+
+      <script type="text/javascript" data-savepage-src="//statuspage-production.s3.amazonaws.com/se-v2.js" src="">
+      </script>
+      <script type="text/javascript"></script>
+
+    
+  
+
+<div id="Vidown_extension_alhnopeoagjmjfgcbnokcnagkecgdcdh" style="display: none;"></div><div id="vidown_float_panel_div" style="display: none;"><a id="vidown_float_panel_download" title="用【维棠】下载视频">维棠下载</a><span id="vidown_float_panel_sep">|</span><input type="button" value=" " id="vidown_float_panel_close" title="关闭"></div></body></html>

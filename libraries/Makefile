@@ -5,15 +5,15 @@
 ###
 ### ------ 
 ###   v0.0.1
-### change log: build CGIDebugLogd Ïà¹Ø
+### change log: build CGIDebugLogd ç›¸å…³
 ###
 ### ------
 ###   v0.0.2
-### change log: build mini_httpd Ïà¹Ø
+### change log: build mini_httpd ç›¸å…³
 ### 
 ### ------
 ###   v0.0.3
-### change log: build CGIDebugLogc Ïà¹Ø
+### change log: build CGIDebugLogc ç›¸å…³
 ###
 
 ## get mini_httpd-<version>.tar.gz packages
@@ -33,7 +33,17 @@ MOVE = mv
 COPY = cp
 RM   = rm 
 
-EXE_CGIDebugLog := CGIDebugLogd.py daemonEcho2 libCGIDebugLogc.a
+###
+### usage LINUX-C_daemon
+###
+# EXE_CGIDebugLog := CGIDebugLogd.py daemonEcho2 libCGIDebugLogc.a
+
+###
+### usage python-dameon
+###
+EXE_CGIDebugLog := CGIDebugLogd.py DaemonEcho2 libCGIDebugLogc.a
+
+
 EXE_MINIHTTPD   := mini_httpd
 
 Lib_mini_httpd := mini_httpd-1.19
@@ -61,18 +71,26 @@ CGIDebugLog: $(EXE_CGIDebugLog)
 $(EXE_CGIDebugLog): $(Lib_CGIDebugLog)
 
 CGIDebugLogd.py:
-	$(COPY) $(Lib_CGIDebugLog)/bin/$@ ./
-daemonEcho2:
-	$(COPY) $(Lib_CGIDebugLog)/bin/$@ ./
+	$(MOVE) $(Lib_CGIDebugLog)/bin/$@ ./
+###
+### usage LINUX-C_daemon
+###
+# daemonEcho2:
+# 	$(COPY) $(Lib_CGIDebugLog)/bin/$@ ./
+###
+### usage python-daemon
+###
+DaemonEcho2:
+	$(MOVE) $(Lib_CGIDebugLog)/bin/$@ ./
 libCGIDebugLogc.a:
-	$(COPY) $(Lib_CGIDebugLog)/bin/$@ ./
+	$(MOVE) $(Lib_CGIDebugLog)/bin/$@ ./
 
 
-### ÏÂÃæ£º
-### Ó¦ÓÃ³ÌĞò Óë ¿âÁ´½Ó µÄÒÀ´æ¹ØÏµ
+### ä¸‹é¢ï¼š
+### åº”ç”¨ç¨‹åº ä¸ åº“é“¾æ¥ çš„ä¾å­˜å…³ç³»
 ### -------
-### ÕâÀï£¬Ó¦ÓÃ³ÌĞò²¢·ÇÈç´Ë£¬Ó¦ÓÃ³ÌĞòÔÚ make lib µÄÊ±ºòÃ»ÓĞÂíÉÏ±àÒë£¬
-### make lib ±àÒë³ö¿â£¬²¢ÇÒcopy µ½Ò»¶¨µÄÎ»ÖÃ£¬Ìá¹© Ó¦ÓÃ³ÌĞò±àÒëºÍÔËĞĞ»·¾³¡£
+### è¿™é‡Œï¼Œåº”ç”¨ç¨‹åºå¹¶éå¦‚æ­¤ï¼Œåº”ç”¨ç¨‹åºåœ¨ make lib çš„æ—¶å€™æ²¡æœ‰é©¬ä¸Šç¼–è¯‘ï¼Œ
+### make lib ç¼–è¯‘å‡ºåº“ï¼Œå¹¶ä¸”copy åˆ°ä¸€å®šçš„ä½ç½®ï¼Œæä¾› åº”ç”¨ç¨‹åºç¼–è¯‘å’Œè¿è¡Œç¯å¢ƒã€‚
 ###
 
 
@@ -95,10 +113,24 @@ install:
 
 
 clean:
-	rm -f daemonEcho2 mini_httpd CGIDebugLogd.py libCGIDebugLogc.a
+###
+### usage LINUX-C_daemon
+### 
+#	rm -f daemonEcho2 mini_httpd CGIDebugLogd.py libCGIDebugLogc.a
+###
+### usage python-daemon
+###
+	rm -f DaemonEcho2 mini_httpd CGIDebugLogd.py libCGIDebugLogc.a
 
 clean_all:
-	rm -f daemonEcho2 mini_httpd CGIDebugLogd.py libCGIDebugLogc.a
+###
+### usage LINUX-C_daemon
+### 
+#	rm -f daemonEcho2 mini_httpd CGIDebugLogd.py libCGIDebugLogc.a
+###
+### usage python-daemon
+###
+	rm -f DaemonEcho2 mini_httpd CGIDebugLogd.py libCGIDebugLogc.a
 	$(MAKE) --directory=mini_httpd-1.19 clean
 	$(MAKE) --directory=DebugLog_solution clean
 	@echo "$'\033[0;41m !!!!!!  not remove mini_httpd-1.19 directory  !!!!!!\033[0m\n"

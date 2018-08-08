@@ -79,15 +79,12 @@ $(CGI_PROGRAM):
 ## ^^ 以上， 调用了 src/Makefile & libraries/Makefile
 ##
 
-#$(Lib&Bin_DIR):
-#	$(MAKE) --directory=$@
-
 
 ###
 ### make lib => 需要 mini_httpd;  cgic.a, flate.a, cgiDebugLog.a 
 ###
 LIB: $(Libraries)
-	$(COPY) $(Libraries)/libCGIDebugLogc.a ./lib
+	$(MOVE) $(Libraries)/libCGIDebugLogc.a ./lib
 	$(MAKE) --directory=lib all 	## for libcigc.a
 
 $(Libraries):
@@ -95,10 +92,16 @@ $(Libraries):
 	@echo "======= finished build libraries/  =======\n"
 
 BIN:
-	$(COPY) $(Libraries)/mini_httpd ./bin
-	$(COPY) $(Libraries)/CGIDebugLogd.py ./bin
-	$(COPY) $(Libraries)/daemonEcho2 ./bin
-
+	$(MOVE) $(Libraries)/mini_httpd ./bin
+	$(MOVE) $(Libraries)/CGIDebugLogd.py ./bin
+###
+### usage LINUX-C_daemon
+###
+#	$(COPY) $(Libraries)/daemonEcho2 ./bin
+###
+### usage python-dameon
+###
+	$(MOVE) $(Libraries)/DaemonEcho2 ./bin
 
 Include:
 	$(MAKE) --directory=include 

@@ -1,0 +1,110 @@
+#!/usr/bin/env python3
+
+"""
+# file name: DaemonEcho2
+# Author   : Joseph Lin
+# E-mail   : joseph.lin@aliyun.com
+# 
+###
+###
+"""
+
+###
+### import packages
+###
+import os, sys, io
+
+import time
+
+sys.path.append("lib/python3.5")
+try:
+	from daemon import runner
+except ImportError as e:
+	print( "ImportError: ", str(e), file=sys.stderr )
+	print( "run me as: WorkPath/ $ ./bin/DaemonEcho2 <tty> \n",
+			"and check \"daemon/\" directory on <path>/WorkPath/lib/python3.5\n ",
+			file=sys.stderr)
+	sys.exit(211) ## 211: env_err
+
+import CGIDebugLogd
+
+# import DaemonImportTest
+
+
+###
+### Global variables
+###
+# doDebug = True
+doDebug = False
+
+
+	
+
+###
+### functions define
+###
+def foo():
+	pass
+
+class App():
+	__CGIDebugLogd_argc = 0
+	__CGIDebugLogd_argv = list()
+
+	def __init__(self, argc, argv, tty="/dev/null"):
+		self.stdin_path = "/dev/null"
+		self.stdout_path = tty
+		self.stderr_path = tty
+		self.pidfile_path = "/tmp/DaemonEcho2.pid"
+		self.pidfile_timeout = 5
+
+		self.__CGIDebugLogd_argc = argc
+		self.__CGIDebugLogd_argv = argv
+
+	def run(self):
+
+		# while True:
+		# 	print( "Hollo Python-daemon!")
+		# 	time.sleep(5)
+		if doDebug:
+			print("__CGIDebugLogd_argc: ", str(self.__CGIDebugLogd_argc))
+			print("__CGIDebugLogd_argv: ", self.__CGIDebugLogd_argv)
+
+		CGIDebugLogd.main(self.__CGIDebugLogd_argc, self.__CGIDebugLogd_argv)
+
+
+
+###
+### running logical
+###
+def main(argc, argv):
+
+	if argc!=2:
+		print("Command error!\n", file=sys.stderr)
+		sys.exit(210)  ## CMD_ERR
+	
+	app = App(argc, argv, tty=argv[1])
+	daemon_runner = runner.DaemonRunner(app)
+	daemon_runner.do_action()
+	sys.exit(0)
+
+
+if __name__ == '__main__':
+	CGIDebugLogd_argv = list()
+	CGIDebugLogd_argc = len(sys.argv) - 1
+
+	if CGIDebugLogd_argc!=2:
+		print("Command error!\n", file=sys.stderr)
+		sys.exit(210)  ## CMD_ERR
+
+	for i in range(len(sys.argv)):
+		if i==1:
+			continue
+		CGIDebugLogd_argv.append(sys.argv[i])
+
+	if doDebug:
+		print("CGIDebugLogd_argv: \n", 
+			CGIDebugLogd_argv)
+
+
+	main(CGIDebugLogd_argc, CGIDebugLogd_argv)
+

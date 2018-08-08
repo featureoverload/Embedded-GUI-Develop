@@ -10,7 +10,9 @@ RM=rm -f
 #VPATH=include src lib bin
 VPATH = ../include
 
-EXE=daemonEcho2 CGIDebugLogd.py libCGIDebugLogc.a
+# EXE=daemonEcho2 CGIDebugLogd.py libCGIDebugLogc.a
+EXE=DaemonEcho2 CGIDebugLogd.py libCGIDebugLogc.a
+
 
 MACRO_FLAGS = 
 #MACRO_FLAGS += -DSTRICT_DAEMON
@@ -32,14 +34,19 @@ clean:
 	$(MAKE) --directory=$(CGIDebugLogc) clean
 	$(MAKE) --directory=$(CGIDebugLogd) clean
 
-daemonEcho2:
-	$(MAKE) --directory=$(CGIDebugLogd) getdaemonEcho2
-# daemonEcho2: $(CGIDebugLogd)/daemonEcho2
-# 	cp $(CGIDebugLogd)/daemonEcho2 ./
+clean_all:
+	rm -f $(EXE)
+	$(MAKE) --directory=$(CGIDebugLogc) clean
+	$(MAKE) --directory=$(CGIDebugLogd) clean
+
+# daemonEcho2:
+	# $(MAKE) --directory=$(CGIDebugLogd) getdaemonEcho2
+DaemonEcho2:
+	$(MAKE) --directory=$(CGIDebugLogd) getDaemonEcho2
+
 CGIDebugLogd.py: $(CGIDebugLogd)/CGIDebugLogd.py
 	cp $< ./
-$(CGIDebugLogd)/daemonEcho2:
-	$(MAKE) --directory=$@
+
 
 libCGIDebugLogc.a: $(CGIDebugLogc)/CGIDebugLogc.o
 	ar rvu $@ $^

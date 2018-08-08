@@ -24,6 +24,8 @@ Embedded-GUI-Develop
     Summary
     ToDo
     ChangeLog
+        Aug/05/2018
+        Aug/04/2018
         2018/Jul/22
         2018/Jul/21
         daemonEcho2
@@ -56,8 +58,12 @@ $ ## b. 运行 mini_httpd 命令
 $ ## a. & b. 查看 "2018/Jul/22 -> usage" 一节
 $
 $ #### 2. 运行 CGIDebugLogd.py 在后台 
-$ ##   -> 查看下面的 “2018/Jul/21 -> daemonEcho2 change log” 一节。
+$ cd WorkPath/ && ./bin/DaemonEcho2 start `tty` && cd ../
 $ 
+$ ## 切换 输出终端方式：
+$ cd WorkPath/ && ./bin/DaemonEcho2 restart <tty> && cd ../
+$   ## <tty> should like: /dev/ttyS0 or /dev/pts/1 etc..  
+$
 $ ## 运行测试
 $ ## 分为 *.c 的 src/ 和 *.html 的 html/
 $ ## 分别修改 src/Makefile 和  html/Makefile
@@ -77,7 +83,7 @@ $
 
     2018/Jul/03 build_patch.py fix htpasswd.c build.
 
-- [ ] CGIDebugLogd 使用 python-daemon solution
+- [x] CGIDebugLogd 使用 python-daemon solution
 - [ ] flate API 向下兼容
 - [ ] README.md 的 `$ make Include` 说明！
 - [ ] make install 的 python install  和 *.cgi; *.html install 区分。
@@ -91,6 +97,21 @@ $
 
 
 ## Change Log
+
+### Aug/05/2018
+
+**fixed** CGIDebugLogd 使用 python-daemon solution
+
+使用 python-daemon 同时 **fixed** 重新分配 tty 的问题！
+
+  r460 - r466
+
+1. 因为 python-daemon 库在 WorkPath/lib/python3.5/ 中， 所以启动 DaemonEcho2 **必须严格** 路径！
+2. 启动 DaemonEcho2 命令： `WorkPath/ $ ./bin/DaemonEcho2 start <tty>` (如： ./bin/DaemonEcho2 "/dev/pts/1" )
+3. **python-daemon 库的 runner.py 有bug， 做了 fix 在上述路径中！**
+4.   重新分配 tty 命令(Example)： `WorkPath/ $ ./bin/DaemonEcho2 restart "/dev/ttyS0"`
+
+
 
 ### Aug/04/2018
 

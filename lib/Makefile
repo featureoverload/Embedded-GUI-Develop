@@ -7,6 +7,7 @@ CC = gcc
 MAKE = make
 
 COPY = cp
+MOVE = mv
 
 Libraries := ../libraries
 
@@ -18,8 +19,8 @@ CGIC := cgic
 all: libCGIDebugLogc.a libcgic.a libflate.a
 
 # libCGIDebugLogc.a: $()
-libCGIDebugLogc.a:
-	$(COPY) $(Libraries)/$@ ./
+libCGIDebugLogc.a: $(Libraries)/libCGIDebugLogc.a
+	$(MOVE) $(Libraries)/$@ ./
 	@echo ">>>>>   finish build libCGIDebugLogc.a   <<<<<<"
 
 
@@ -35,6 +36,10 @@ libflate.a: $(Flate)
 
 $(Flate):
 	make --directory=$@
+
+$(Libraries)/libCGIDebugLogc.a:
+	make --directory=$(Libraries) CGIDebugLog
+
 
 clean:
 	rm -f libcgic.a

@@ -49,6 +49,8 @@
 ###    /makefile 将分别调用 lib/become_daemon/Makefile 和 src/Makefile
 ###
 
+COPY=cp
+MOVE=mv
 
 ###
 ###  ":=" 这个符号的含义！？？？ 
@@ -57,16 +59,36 @@ lib_become_daemon := lib/become_daemon
 lib_CGIUtils      := lib/CGIUtils
 lib_echo2tmnl     := lib/echo2tmnl 
 
-libraries         := $(lib_become_daemon) $(lib_CGIUtils) $(lib_echo2tmnl)
+###
+### usage LINUX-C_daemon
+###
+# libraries         := $(lib_become_daemon) $(lib_CGIUtils) $(lib_echo2tmnl)
+
+###
+### usage python-daemon
+###
+libraries         := $(lib_CGIUtils) $(lib_echo2tmnl)
+## Note: python-daemon/Reference/pipy@python-daemon/python-daemon-2.1.2.tar.gz
+
 
 CGIDebugLog:= src
 
 .PHONY: all $(CGIDebugLog) $(libraries) install clean
 
+###
+### usage LINUX-C_daemon
+###
+# all: $(CGIDebugLog)
+# 	cp $(CGIDebugLog)/daemonEcho2 $(CGIDebugLog)/CGIDebugLogd.py ./bin/
+# 	cp $(CGIDebugLog)/libCGIDebugLogc.a ./bin/
+# 	@echo "=======  DebugLog_solution/ build finish  ===========\n"
 
+### 
+### usage python-daemon
+###
 all: $(CGIDebugLog)
-	cp $(CGIDebugLog)/daemonEcho2 $(CGIDebugLog)/CGIDebugLogd.py ./bin/
-	cp $(CGIDebugLog)/libCGIDebugLogc.a ./bin/
+	$(MOVE) $(CGIDebugLog)/DaemonEcho2 $(CGIDebugLog)/CGIDebugLogd.py ./bin/
+	$(MOVE) $(CGIDebugLog)/libCGIDebugLogc.a ./bin/
 	@echo "=======  DebugLog_solution/ build finish  ===========\n"
 
 
@@ -93,11 +115,20 @@ install:
 
 ##### $ make clean 将会是一个问题 #####
 clean:  
-	$(MAKE) --directory=$(CGIDebugLog) clean && echo "\n"
+	$(MAKE) --directory=$(CGIDebugLog) clean       && echo "\n"
 #	$(MAKE) --directory=$(libraries) clean
 	$(MAKE) --directory=$(lib_become_daemon) clean && echo "\n"
-	$(MAKE) --directory=$(lib_CGIUtils) clean && echo "\n"
-	$(MAKE) --directory=$(lib_echo2tmnl) clean && echo "\n"
+	$(MAKE) --directory=$(lib_CGIUtils) clean      && echo "\n"
+	$(MAKE) --directory=$(lib_echo2tmnl) clean     && echo "\n"
+	rm -f ./bin/*
+
+
+clean_all:  
+	$(MAKE) --directory=$(CGIDebugLog) clean       && echo "\n"
+#	$(MAKE) --directory=$(libraries) clean
+	$(MAKE) --directory=$(lib_become_daemon) clean && echo "\n"
+	$(MAKE) --directory=$(lib_CGIUtils) clean      && echo "\n"
+	$(MAKE) --directory=$(lib_echo2tmnl) clean     && echo "\n"
 	rm -f ./bin/*
 
 ## help - The default goal

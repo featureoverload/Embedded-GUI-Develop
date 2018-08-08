@@ -1,8 +1,8 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 
 """
 # file name: CGIDebugLogd.py
-# author   : Huaxing Lin
+# author   : Joseph Lin
 # E-mail   : joseph.lin@aliyun.com
 #
 # ------ May/21/2018 23:21 ------
@@ -57,8 +57,8 @@ def socketInit():
 ###
 ### running logical:
 ###
-def main():
-	argc = len(sys.argv)
+def main(argc, argv):
+	# argc = len(sys.argv)
 	#if argc != 3:
 	if argc != 2:        ## $ <appname> <TTY device>
 		## print( "usage: $ %s <ternimal device> <contents to echo>" %sys.argv[0], file=sys.stderr)
@@ -73,7 +73,7 @@ def main():
 		msg = msg.decode("utf-8")
 		#print("msg recive from client is:\n%s" %msg)                  ## -[x] 从显示效果来说，需要对发送过来的数据解码
 		#echo2(sys.argv[1], sys.argv[2])
-		echo2(sys.argv[1], msg)
+		echo2(argv[1], msg)
 	
 
 	listen_socket.close()
@@ -83,5 +83,5 @@ def main():
 
 
 if __name__ == "__main__":
-	main()
+	main(len(sys.argv), sys.argv)
 ##END running program.
