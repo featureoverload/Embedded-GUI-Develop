@@ -5,6 +5,10 @@
 
 
 
+**注：推荐本地使用 Typora 打开 README.md**
+
+
+
 *Overview*
 
 [TOC]
@@ -13,11 +17,23 @@
 
   **master**
 
--[x] 通过打 patch 的方式修改，而非在 source code 里面修改，或者Makefile；daemonEcho2.c 和 htpasswd.c
-
-  2018/Jul/03 build_patch.py fix htpasswd.c build.
-
-**注：推荐本地使用 Typora 打开 README.md**
+```
+------------- README.md  -----------
+Embedded-GUI-Develop
+    Contents
+    Summary
+    ToDo
+    ChangeLog
+        2018/Jul/22
+        2018/Jul/21
+        daemonEcho2
+        2018/Jul/09
+        2018/Jul/08
+        2018/Jul/07
+        2018/Jul/03 -- mini_httpd
+        2018/Jul/01 -- CGIDebugLog
+    Note
+```
 
 
 
@@ -55,7 +71,38 @@ $
 
 
 
-## 2018/Jul/22 - change log
+## ToDo
+
+- [x] 通过打 patch 的方式修改，而非在 source code 里面修改，或者Makefile；daemonEcho2.c 和 htpasswd.c
+
+    2018/Jul/03 build_patch.py fix htpasswd.c build.
+
+- [ ] CGIDebugLogd 使用 python-daemon solution
+- [ ] flate API 向下兼容
+- [ ] README.md 的 `$ make Include` 说明！
+- [ ] make install 的 python install  和 *.cgi; *.html install 区分。
+
+
+
+## **Note**
+
+​    N/A
+
+
+
+## Change Log
+
+### Aug/04/2018
+
+1. update README.md
+
+2. README.md 使用新结构 -- Contents, Summary, ToDo, Note, ChangeLog.
+
+     添加 ToDo 内容。(内容 SYNC [GitHub 上的 Issue -> ToDo](https://github.com/RDpWTeHM/Embedded-GUI-Develop/issues/1))
+
+   
+
+### 2018/Jul/22
 
 1. 添加 mini_httpd.conf 的自动适应环境patch!
 2. N/A
@@ -106,7 +153,7 @@ $ ./WorkPath/bin/mini_httpd -C ./WorkPath/etc/mini_httpd/mini_httpd.conf
 
 
 
-## 2018/Jul/21
+### 2018/Jul/21
 
    merge 了 Jul-19-ToDo 这个branch 的 develop，
 
@@ -114,7 +161,7 @@ $ ./WorkPath/bin/mini_httpd -C ./WorkPath/etc/mini_httpd/mini_httpd.conf
 2. 添加了 Flate 库
 3. daemonEcho2 进程的相关启动做了修改。
 
-### daemonEcho2 change log
+### daemonEcho2
 
 **启动方式：**
 
@@ -140,9 +187,9 @@ $
 
 
 
-## 2018/Jul/09
+### 2018/Jul/09
 
-### *.cgi 使用 libCGIDebugLogc.a 测试
+#### *.cgi 使用 libCGIDebugLogc.a 测试
 
 测试文件为： `src/hello-CGIDebugLog.c` , 
 
@@ -156,9 +203,9 @@ $
 
 
 
-## 2018/Jul/08
+### 2018/Jul/08
 
-### 新增 CGIDebugLogc 测试
+#### 新增 CGIDebugLogc 测试
 
 1. 确保 *2018/Jul/08 -> CGIDebugLogd 运行* 一节中的 CGIDebugLogd.py 在后台运行。
 
@@ -182,7 +229,6 @@ $
    $ ## 可以在运行 CGIDebugLogd.py 打开的终端中看到输出！
    ```
 
-
 ### CGIDebugLogd 运行
 
   更新过了 daemonEcho2.c 为了适合 WorkPath/ 目录结构
@@ -199,9 +245,9 @@ $ ./bin/daemonEcho2 `tty`
 
 
 
-## 2018/Jul/07
+### 2018/Jul/07
 
-### mini_httpd + CGI 运行测试
+#### mini_httpd + CGI 运行测试
 
 > 添加 HTML-hello.c -> HTML-hello.cgi 测试 Web server 环境
 
@@ -212,13 +258,13 @@ $ ./bin/daemonEcho2 `tty`
 
 
 
-### mini_httpd.conf 配置文件--mini_httpd运行环境
+#### mini_httpd.conf 配置文件--mini_httpd运行环境
 
   查看 WorkPath/README.md
 
 
 
-### 避免重复编译
+#### 避免重复编译
 
 基本使用：
 
@@ -234,7 +280,7 @@ $
 
 
 
-## 2018/Jul/03 -- mini_httpd
+### 2018/Jul/03 -- mini_httpd
 
 ```shell
 $ cd libraries
@@ -248,7 +294,7 @@ daemonEcho2*
 
 
 
-## 2018/Jul/01 -- CGIDebugLog
+### 2018/Jul/01 -- CGIDebugLog
 
 ```shell
 $ 
@@ -263,6 +309,4 @@ $
 
 CGIDebugLog automatic finished!
 
-**Note**
 
-​    N/A

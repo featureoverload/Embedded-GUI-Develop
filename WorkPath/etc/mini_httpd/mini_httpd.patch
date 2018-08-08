@@ -96,7 +96,8 @@ def main():
 	workPathIndex=workPath.find("WorkPath")
 	if workPathIndex!=-1:
 		workPath = workPath[0:workPathIndex+len("WorkPath")]
-i
+	else:
+		print("!!!!  get WorkPath fail!!!!!\n", file=sys.stderr)
 		sys.exit(911)
 
 	conf_fp = None

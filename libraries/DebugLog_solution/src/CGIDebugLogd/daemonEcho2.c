@@ -273,7 +273,7 @@ int run ( int argc, char *argv[] )
 		 *     |---- var/
 		 *     `---- etc/
 		 */
-		#define CGIDEBUGLOG_SRC_RELATIVE_PATH 	"/bin/CGIDebugLogd.py"
+		#define CGIDEBUGLOG_SRC_RELATIVE_PATH "/bin/CGIDebugLogd.py"
 		#define CGIDEBUGLOG_PROGRAM_NAME		"CGIDebugLogd.py"
 		/* $ cd WorkPath
 		 * $ ./bin/daemonEcho2 `tty`
