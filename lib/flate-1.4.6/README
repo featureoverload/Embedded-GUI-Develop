@@ -1,0 +1,180 @@
+FLATE Library (Fast Template 1.4.6)
+(c) Fabien MENEMENLIS (nihilist@dead-inside.org)
+
+This program is released under the LGPL License. For copying information
+see the file COPYING.
+Note that the 1.4 version is just a license change: it is now covered by
+the Lesser General Public License and not by the GPL anymore, due to evident
+constraints pointed to me by some users.
+1.4.4 has a few bug fixes over 1.4.3 (mostly with multiple zones / tables)
+1.4.5 does a better job at parsing/checking buggy templates (checktpl)
+1.4.6 is an important fix regarding memory overlaps due to a rewrite of the
+memcpy() function in newer glibc (thanx to Gerry Marthe for pointing it out)
+
+
+1. What is it all about?
+
+FLATE is a library used in cgi applications to deal with html files organized
+as templates. The goal is to avoid any html code in the application. All
+changes to the html pages produced is made through functions, able to deal
+with complex tables and zones. Thus it's much easier to maintain the html
+code, as a programmer can only take care for the application code, and a
+html designer can do changes to the html code without asking the programmer
+to change his code.
+
+
+2. How do you install it?
+
+It's fairly easy. For C, do a "make" in the root directory of the archive, the
+resulting library (libflate.a) should be linked with your C cgi.
+(gcc cgi.c -o cgi -L/path/to/Flate -I/path/to/Flate -lflate)
+Perl support is also included, but don't bug me with it as I don't know much
+about perl. To install the module, change dir to perl5/CGI/TemplateHTML in the
+archive, then do a "perl Makefile.PL; make; make install". That should do it.
+If you want to use the fetch from another server feature you will have to
+add -D_USE_FETCH_ in the makefile and link your program with -lfetch. It
+requires the libfetch library as the one found in FreeBSD (I have no idea for
+the other operating systems!)
+
+
+3. How does it work?
+
+3.1. HTML code
+
+Your html code will now contain variables that will be easily modified by
+the application through the library. That is, when you design your page, you
+can now do it exactly how you want it to appear to the user, but the zones
+that the CGI can change will appear as the following:
+##variable## for a text zone.
+<!-- #BEGINZONE myzone --><html code goes here><!-- #ENDZONE myzone --> for
+a zone that may appear or not, depending on what the CGI decides
+<!-- #BEGINTABLE mytable --><html code><!-- #ENDTABLE mytable --> for a zone
+that may appear or not, multiple times (used when you draw a table for example,
+you can change the columns value with ##variables##).
+
+An example of a simple html template would be:
+<html>
+<h1>
+  ##title##
+</h1>
+<body>
+<p>
+
+<!-- let's imagine you either want to show on your page a sun if it's daytime
+     or a moon if it's nighttime -->
+<!-- #BEGINZONE sunzone -->
+  <img src="sun.png">
+<!-- #ENDZONE sunzone -->
+<!-- #BEGINZONE moonzone -->
+  <img src="moon.png">
+<!-- #ENDZONE moonzone -->
+
+<!-- the following will display a table with 2 columns and will be fed by
+     the CGI -->
+<p>
+The following events are recorded in your database:
+<table>
+<!-- #BEGINTABLE dbline -->
+<tr>
+  <td>
+    ##number##
+  </td>
+  <td>
+    ##value##
+  </td>
+</tr>
+<!-- #ENDTABLE dbline -->
+</table>
+</body>
+</html>
+
+Version 1.4.1 features a new tool to check your HTML templates. Use the
+program "checktpl" followed by the name of your template to validate
+your HTML code (when the code gets complex it's easy to mispell a
+zone or table name: this would result in the page not being displayed
+correctly, or even not at all on Netscape for example if a <table>
+is not closed).
+
+Since version 1.4.3 you can also include external files, called from the
+template with <!-- #INCLUDEFILE /path/to/otherfile.html -->
+
+
+3.2. CGI code
+
+3.2.1. C code
+
+You first need to include "flate.h" in your program.
+
+templateSetFile("template.html");
+  this will load the file into memory and initialize the template.
+
+starting from version 1.4.2 there's an alternative to fetch the template
+from another web server:
+templateSetFileURL("http://myserver.com/template.html");
+it will return -1 if the fetch failed
+
+templateSetVar("variable", "value");
+  this function will set ##variable## to "value".
+
+templateSetVar("myzone", "");
+  is used to display a <!-- #BEGINZONE myzone --> <!-- #ENDZONE myzone -->
+  block. If you don't call this function, the zone will not be displayed.
+
+templateDumpTableLine("dbline");
+  will print the zone between #BEGINTABLE and #ENDTABLE, with the variables
+  set before. Once printed, the variables are set to NULL again, you can
+  reuse templateSetVar("variable", "value"); to set them for the next
+  templateDumpTableLine("dbline");
+
+Once you're done, you can use:
+templatePrint();
+  this will output the whole page (the result) to stdout.
+or
+buf = templatePage(); (buf being a char *)
+  this will dump the output in a buffer pointed by buf. You need to free(buf);
+  after using this function.
+
+templateFreeMem();
+  will free all memory used by the template.
+
+
+3.2.2. Perl code
+
+This isn't much different, TemplateHTML is part of the CGI module when
+installed:
+
+use CGI::TemplateHTML;
+
+my $template = new CGI::TemplateHTML();
+
+and you can then use the methods
+$template->setFile("file.html"); (see templateSetFile() in C)
+$template->setVar("variable", "value"); (see templateSetVar())
+$template->dumpTableLine("dbline"); (see templateDumpTableLine())
+
+template->print; will show the page
+
+
+4. Some notes
+
+This document won't help you realize the full potential of the library,
+I'm sorry about it. Just imagine that having no more html code in your C
+or perl code is a real enjoyment.
+Furthermore, you can set your variables in any order, and a change in the html
+code doesn't mean a change in the CGI code.
+The library has been used for years in production world on rather big sites
+like societe.com and dir.com with no crash/excessive load due to the library.
+That said, the C CGIs exits after serving the query, I can't be as certain for
+flate1.5 because I haven't tested it much, nor can I guarantee there are
+no memory leaks with, say, FastCGI for example.
+
+Included in the subdirectory flate1.5 is an evolution of Flate which can
+handle more than one object in memory, but it breaks compatibility
+with the older versions and does not support Perl anymore. So far I haven't
+had any use for this "evolution", so I don't feel like releasing it as a new
+version yet. Judge for yourself...
+
+Thanks to Luc Chatelain for pointing out a few problems to me, namely the
+void * different behaviour on SCO than in the GNU world.
+Thanks to Niraj Gupta for correcting issues on 1.5 with G++, fixing a free()
+issue and making it -Wall compliant.

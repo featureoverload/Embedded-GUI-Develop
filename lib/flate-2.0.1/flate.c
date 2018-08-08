@@ -50,6 +50,29 @@ enum {
 };
 
 
+static Flate *f = NULL;
+
+int templateSetFile( char filename[] ){
+    f = NULL;
+    flateSetFile( &f, filename );
+    return 0;
+}
+
+int templateSetVar( char *fld, char *val ){
+    flateSetVar( f, fld, val );
+    return 0;
+}
+
+int templatePrint(){
+    flatePrint( f, "" );
+    return 0;
+}
+
+int templateFreeMem(){
+    flateFreeMem(f);
+}
+
+
 static int tempcompare(const void *a, const void *b) {
     return(strcmp(((st_ptr *)a)->name, ((st_ptr *)b)->name));
 }
@@ -66,7 +89,8 @@ static int tempcompname(const void *a, const void *b) {
  */
 static void *tempsearch(const void *elem, const void *base, size_t nbelem,
                         size_t size, int (*comparefunc)(const void *, const void *),
-                        size_t *nb) {
+                        size_t *nb) 
+{
     void *ptr;
     int pos;
 

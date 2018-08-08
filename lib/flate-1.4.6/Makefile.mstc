@@ -1,0 +1,43 @@
+#/******************************************************************************/
+#/*
+#* Copyright (C) Mitrastar Communications, Corp.
+#* All Rights Reserved.
+#*
+#* Mitrastar Confidential; Need to Know only.
+#* Protected as an unpublished work.
+#*
+#* The computer program listings, specifications and documentation
+#* herein are the property of Mitrastar Communications, Corp. and
+#* shall not be reproduced, copied, disclosed, or used in whole or
+#* in part for any reason without the prior express written permission of
+#* Mitrastar Communications, Corp.
+#*/
+#/******************************************************************************/
+include ${PRODUCT_ROOT_DIR}/Project/Make.config
+
+APP_SRC_DIR := $(shell pwd)
+
+
+#/************************* Start your Makefile *******************************/
+
+all: _cross
+	@echo "###################################"
+	@echo "#               libflate"
+	@echo "#        Build up successfully"
+	@echo "###################################"
+
+
+_cross:
+	echo "Build libflate"
+
+	$(MAKE) -C $(APP_SRC_DIR)
+	 
+install:
+	$(STRIP) --strip-debug --remove-section=.note --remove-section=.comment $(APP_SRC_DIR)/libflate.so
+	cp $(APP_SRC_DIR)/libflate.so  $(FILESYSTEM_DIR)/lib/
+	
+clean:
+	echo "Clean libflate"
+	$(MAKE) -C $(APP_SRC_DIR) distclean
+	
+#/************************* End your Makefile *******************************/

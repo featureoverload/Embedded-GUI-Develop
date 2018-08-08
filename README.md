@@ -24,6 +24,7 @@ Embedded-GUI-Develop
     Summary
     ToDo
     ChangeLog
+        Aug/06/2018
         Aug/05/2018
         Aug/04/2018
         2018/Jul/22
@@ -47,11 +48,13 @@ Embedded-GUI-Develop
 $ make init
 $ make LIB
 $ make BIN
+$ make Include
 $ 
 $ sudo make install  #### 安装 python 程序所需的库。
 $ 
 $ cp bin/* WorkPath/bin/
 $ 
+$ ###### 运行环境  ######
 $ #### 1. 运行 mini_httpd  ######
 $ ## a. 需要修改 mini_httpd.conf 文件
 $ ## b. 运行 mini_httpd 命令
@@ -67,7 +70,7 @@ $
 $ ## 运行测试
 $ ## 分为 *.c 的 src/ 和 *.html 的 html/
 $ ## 分别修改 src/Makefile 和  html/Makefile
-$ make src ## or $ make --directory=src
+$ make SRC ## or $ make --directory=src
 $ make --directory=src install
 $ 
 $ make html ## or $ make --directory=html
@@ -84,8 +87,8 @@ $
     2018/Jul/03 build_patch.py fix htpasswd.c build.
 
 - [x] CGIDebugLogd 使用 python-daemon solution
-- [ ] flate API 向下兼容
-- [ ] README.md 的 `$ make Include` 说明！
+- [x] flate API 向下兼容
+- [x] README.md 的 `$ make Include` 说明！
 - [ ] make install 的 python install  和 *.cgi; *.html install 区分。
 
 
@@ -97,6 +100,41 @@ $
 
 
 ## Change Log
+
+### Aug/07/2018
+
+1. 确认需要使用 flate-2.0.1
+
+   flate-2.0.1 API 兼容在 r494
+
+2. 添加 build-deps.txt
+
+
+
+### Aug/06/2018
+
+1. update Makefile 
+
+   set MOVE instead of COPY; 
+
+   save Makefile as UTF-8 encode.
+
+2.  merge ***<u>easy_GUI_develop/github_Embedded-GUI-Develop</u>*** develop revision to <u>*Branch/br-github_EbdGUIDevelop/*</u>.
+
+3.  prepare for flate-1.4.6
+
+4.  update README.md for `$ make Include` ; (and **Jul/22** more detail.)
+
+5.   test flate-1.4.6  -than-> -[x]update 本 REAME.md
+
+   从 MTK 的 OBM trunk 上找到了原版的 flate-1.4.6 和 flate-1.5.6.
+
+   其中，flate-1.5.6 和 flate-2.0.1 接近，改动较大，不向下兼容，所以不使用。
+
+
+​                         
+
+
 
 ### Aug/05/2018
 
@@ -121,12 +159,16 @@ $
 
      添加 ToDo 内容。(内容 SYNC [GitHub 上的 Issue -> ToDo](https://github.com/RDpWTeHM/Embedded-GUI-Develop/issues/1))
 
-   
+
 
 ### 2018/Jul/22
 
-1. 添加 mini_httpd.conf 的自动适应环境patch!
-2. N/A
+1. 添加 mini_httpd.conf 的自动适应环境patch! 
+2. CGIDebugLogc.* 的 API 封装 
+3. Makefile 的 `$ make Include`  
+4. build *hello-CGIDebugLog.c* with *libCGIDebugLogc.a* new API
+
+
 
 #### Detail:
 
@@ -172,7 +214,17 @@ $ ./WorkPath/bin/mini_httpd -C ./WorkPath/etc/mini_httpd/mini_httpd.conf
 
 
 
+2. N/A
 
+
+3. Makefile; include/Makefile 
+         -- 创建 *.h 文件的软链接 for build.
+
+4. build hello-CGIDebugLog.c:
+
+   `$ gcc -I ../include hello-CGIDebugLog.c ../lib/libCGIDebugLogc.a -o hello-CGIDebugLog.cgi`
+
+   ​
 
 ### 2018/Jul/21
 

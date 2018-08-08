@@ -1,0 +1,11 @@
+python:
+    python-daemon
+    cgiutils
+    utils
+    echo2tmnl
+    lockfile
+    jinja2
+
+C:
+    CGIC
+    flate

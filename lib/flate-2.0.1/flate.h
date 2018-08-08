@@ -71,4 +71,9 @@ extern FlateForm *flateSetForm(char *s);
 extern char *flateGetForm(FlateForm *form, char *name);
 extern void flateDestroyForm(FlateForm **form);
 
+int templateSetFile( char filename[] );
+int templateSetVar( char *fld, char *val );
+int templatePrint();
+int templateFreeMem();
+
 #endif

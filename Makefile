@@ -55,10 +55,11 @@ Include = include
 ## make all = make lib + make src ##+ make Lib&Bin
 all: $(CGI_PROGRAM)
 
-init: $(Libraries)/mini_httpd-1.19.tar.gz $(Libraries)/DebugLog_solution.zip
+init: $(Libraries)/mini_httpd-1.19.tar.gz
 	cd $(Libraries) && tar -xzvf mini_httpd-1.19.tar.gz
 	cd $(Libraries) && chmod +w mini_httpd-1.19/htpasswd.c
 	cd $(Libraries)	&& python3 build_patch.py
+	cd $(Lib) && $(COPY) -fr flate-2.0.1 flate
 
 ## DebugLog_solution.zip out of date. there is DebugLog_solution/ on trunk.
 #	cd $(Libraries) && unzip DebugLog_solution.zip
@@ -68,7 +69,7 @@ init: $(Libraries)/mini_httpd-1.19.tar.gz $(Libraries)/DebugLog_solution.zip
 ### 应用程序 与 库链接 的依存关系
 ### (*.cgi)    (mini_httpd, cgiDebugLogd, cgic.so web.so)
 ###
-$(CGI_PROGRAM): $(Libraries) LIB BIN 
+$(CGI_PROGRAM): $(Libraries) LIB BIN Include
 
 ###
 ### 以下编译了 *.cgi， 并且确保依赖库要被编译。
@@ -79,6 +80,9 @@ $(CGI_PROGRAM):
 ## ^^ 以上， 调用了 src/Makefile & libraries/Makefile
 ##
 
+SRC: include/flate.h include/cgic.h lib/libcgic.a lib/libflate.a lib/libCGIDebugLogc.a
+	make --directory=src
+	@echo "===== END build src/ ========"
 
 ###
 ### make lib => 需要 mini_httpd;  cgic.a, flate.a, cgiDebugLog.a 

@@ -1,0 +1,5 @@
+config BR2_PACKAGE_LIBFLATE
+        bool "libflate"
+        default n
+        help
+          Flate is a template library used to deal with html code in CGI applications.

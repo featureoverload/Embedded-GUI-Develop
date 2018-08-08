@@ -117,7 +117,10 @@ install:
 clean:  
 	$(MAKE) --directory=$(CGIDebugLog) clean       && echo "\n"
 #	$(MAKE) --directory=$(libraries) clean
-	$(MAKE) --directory=$(lib_become_daemon) clean && echo "\n"
+###
+### usage LINUX-C_daemon
+###
+#	$(MAKE) --directory=$(lib_become_daemon) clean && echo "\n"
 	$(MAKE) --directory=$(lib_CGIUtils) clean      && echo "\n"
 	$(MAKE) --directory=$(lib_echo2tmnl) clean     && echo "\n"
 	rm -f ./bin/*
@@ -126,7 +129,10 @@ clean:
 clean_all:  
 	$(MAKE) --directory=$(CGIDebugLog) clean       && echo "\n"
 #	$(MAKE) --directory=$(libraries) clean
-	$(MAKE) --directory=$(lib_become_daemon) clean && echo "\n"
+###
+### usage LINUX-C_daemon
+###
+#	$(MAKE) --directory=$(lib_become_daemon) clean && echo "\n"
 	$(MAKE) --directory=$(lib_CGIUtils) clean      && echo "\n"
 	$(MAKE) --directory=$(lib_echo2tmnl) clean     && echo "\n"
 	rm -f ./bin/*
