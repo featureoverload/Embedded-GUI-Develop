@@ -105,7 +105,7 @@ $
 
 1. 确认需要使用 flate-2.0.1
 
-   flate-2.0.1 API 兼容在 r494
+   flate-2.0.1 API 兼容在
 
 2. 添加 build-deps.txt
 
@@ -142,7 +142,6 @@ $
 
 使用 python-daemon 同时 **fixed** 重新分配 tty 的问题！
 
-  r460 - r466
 
 1. 因为 python-daemon 库在 WorkPath/lib/python3.5/ 中， 所以启动 DaemonEcho2 **必须严格** 路径！
 2. 启动 DaemonEcho2 命令： `WorkPath/ $ ./bin/DaemonEcho2 start <tty>` (如： ./bin/DaemonEcho2 "/dev/pts/1" )
