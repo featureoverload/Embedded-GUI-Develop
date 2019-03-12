@@ -1,0 +1,25 @@
+<html>
+<head>
+	<title>download a file|CGI Demo</title>
+<script type="text/javascript">
+	function download_a_file(){
+		alert("you clicked button!");
+	}
+</script>
+
+</head>
+
+<body>
+	<h1>Download a file</h1>
+
+	<form enctype="multipart/form-data"
+	      action="/cgi-bin/download_a_file.cgi"
+	      id="mainform" name="mainform" method="post">
+	    <!-- <div id='download_default_apache2_index_page'> -->
+		<div>
+			<button name='btn_download' id='btn_download'
+			        onclick="download_a_file();" class=''>Download</button>
+	    </div>
+	</form>
+</body>
+</html>
