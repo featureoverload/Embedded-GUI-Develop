@@ -102,11 +102,9 @@ int handler_display(int *stat_p){
 	return ret;
 }
 
-/*
- * 下载功能目前有点儿问题，抓包看一下过程！
- * 可能和使用 apache2 作为 server 和使用 mini_httpd 作为 server 略有不同。
- */
-#define FILENAME "firefox.exe"
+
+#define FILENAME "index.html"
+#define FILEPATH "/var/www/html/"
 
 int handler_submit(void){
 	int ret = ERR_DOWNLOAD_FAIL;
@@ -131,5 +129,40 @@ int handler_submit(void){
 		   FILENAME);
 	fflush(stdout);
 
+	FILE *fp = NULL;
+	char file_fullpath[256] = {'\0'};
+	snprintf(file_fullpath, 255, "%s%s", FILEPATH, FILENAME);
+	if ((fp=fopen(file_fullpath, "rb"))==NULL){
+		// log error
+		return ERR_DOWNLOAD_FAIL;
+	}
+
+	struct stat _fstat;
+	if ( stat(file_fullpath, &_fstat) == -1 ){
+		// log error;
+		return ERR_DOWNLOAD_FAIL;
+	}
+
+	char *download_buffer = NULL;
+	long long read_size = 0;
+	download_buffer = (char*)malloc(sizeof(char) * ((long long)_fstat.st_size + 1));
+	read_size = fread(download_buffer, sizeof(char), (long long)_fstat.st_size, fp);
+	download_buffer[(long long)_fstat.st_size] = '\0';
+	if (read_size!=(long long)_fstat.st_size){
+		// log err;
+		free(download_buffer);
+		download_buffer = NULL;
+		return ERR_DOWNLOAD_FAIL;
+	}
+
+	if (write(STDOUT_FILENO, download_buffer, (long long)_fstat.st_size) != (long long)_fstat.st_size){
+		// log error
+		return ERR_DOWNLOAD_FAIL;
+	}
+
+	fflush(stdout);
+
+	free(download_buffer);
+	fclose(fp);
 	return ret;
 }
