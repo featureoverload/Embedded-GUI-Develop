@@ -1,25 +1,32 @@
 <html>
 <head>
-	<title>download a file|CGI Demo</title>
-<script type="text/javascript">
-	function download_a_file(){
-		alert("you clicked button!");
-	}
-</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 
+	<title>download a file|CGI Demo</title>
 </head>
 
 <body>
 	<h1>Download a file</h1>
 
 	<form enctype="multipart/form-data"
-	      action="/cgi-bin/download_a_file.cgi"
-	      id="mainform" name="mainform" method="post">
-	    <!-- <div id='download_default_apache2_index_page'> -->
+		  action="/cgi-bin/download_a_file.cgi"
+		  id="mainform" name="mainform" method="post">
+
+		<input type="hidden" name="act" value="0" >
+
+		<!-- <div id='download_default_apache2_index_page'> -->
 		<div>
 			<button name='btn_download' id='btn_download'
-			        onclick="download_a_file();" class=''>Download</button>
-	    </div>
+					onclick="download_a_file();" class=''>Download</button>
+		</div>
 	</form>
+
+<script type="text/javascript">
+	function download_a_file(){
+		alert("you clicked button!");
+		mainform.act.value = 2;  // 2<--> submit
+		document.mainform.submit();
+	}
+</script>
 </body>
 </html>
