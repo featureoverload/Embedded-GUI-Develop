@@ -1,0 +1,14 @@
+# mini_httpd.conf 
+#
+#
+#
+
+port=8282
+dir={{ var_mini_httpd_root }}  ## for .html
+#cgipat=cgi-bin/*
+cgipat={{ var_mini_httpd_cgi_path }}/*.cgi  ## 相对路径
+user=nobody
+pidfile={{ var_mini_httpd_pid_path }}/mini_httpd.pid
+logfile={{ var_mini_httpd_log_path }}/mini_httpd.log
+
+charset=UTF-8
