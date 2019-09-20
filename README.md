@@ -29,3 +29,17 @@ $ n/a
 
 
 
+# OpenWrt 之 Luci Web 开发
+
+> 出于参见太多仓库不好找的考虑，而且 OpenWrt 中的 Luci 本来就是在嵌入式LINUX -- 路由器中使用的，所以放在这个仓库也合适。
+
+- 本仓库单独出 [`Luci-of-OpenWrt/`](Luci-of-OpenWrt) 目录与上面原项目没有相关性，是在本 repo 中独立的存在。
+
+- 该内容并非 Luci 框架源码，而是 Luci 框架介绍和分析。
+
+- 其中或许会存在一部分代码，但是它不是 Luci 框架源码，也不是基于 Luci 框架的 web 开发源码的存放仓库。
+
+[`Luci-of-OpenWrt/`](Luci-of-OpenWrt) 是对 Luci 框架的介绍和分析用以帮助理解 Luci 框架，学习了解之后可期就可以做基于 Luci 框架的 Web 开发了。
+
+
+
