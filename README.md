@@ -26,12 +26,14 @@ $ n/a
 ```
 
 
+<br/>
 
+------
 
 
 # OpenWrt 之 Luci Web 开发
 
-> 出于参见太多仓库不好找的考虑，而且 OpenWrt 中的 Luci 本来就是在嵌入式LINUX -- 路由器中使用的，所以放在这个仓库也合适。
+> 出于有太多仓库不好找到目标的考虑，而且 OpenWrt 中的 Luci 本来就是在嵌入式LINUX -- 路由器中使用的，所以放在这个仓库也合适。
 
 - 本仓库单独出 [`Luci-of-OpenWrt/`](Luci-of-OpenWrt) 目录与上面原项目没有相关性，是在本 repo 中独立的存在。
 
